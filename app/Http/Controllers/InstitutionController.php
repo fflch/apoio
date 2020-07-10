@@ -13,7 +13,7 @@ class InstitutionController extends Controller
      */
     public function index()
     {
-        //
+        return view('institutions.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class InstitutionController extends Controller
      */
     public function create()
     {
-        //
+        return view('institutions.create');
     }
 
     /**
