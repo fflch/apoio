@@ -1,0 +1,483 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 62.5%/1.6 Arial, Helvetica, sans-serif;
+  background-color: #f5f6fc;
+  color: #04156b;
+}
+
+#wrapper {
+  width: 85%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#login {
+  position: relative;
+  width: 99.8%;
+  min-height: 700px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  background-color: #fdfdff;
+}
+
+#conteudo {
+  width: 75%;
+  float: right;
+  min-height: 700px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  background-color: #fdfdff;
+}
+
+.caixa {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -93px;
+  margin-top: -45px;
+  width: 260px;
+  height: 100px;
+}
+
+#rodape {
+  padding: 1px 20px;
+  border-top: 1px solid #ccc;
+  clear: both;
+}
+
+#rodape p {
+  font-size: 1.1em;
+  text-align: center;
+}
+
+#cabecalho {
+  height: 55px;
+  background-color: #455296;
+}
+
+#cabecalho h1, h5, a {
+  color: #fff;
+}
+
+#cabecalho h1 {
+  text-align: center;
+}
+
+#cabecalho h5 {
+  font-size: 1em;
+  padding-right: 10px;
+  text-align: right;
+}
+
+#cabecalho a:link, a:visited {
+  text-decoration: none;
+}
+
+#cabecalho a:hover, a:active {
+  text-decoration: underline;
+}
+
+input {
+  border: 1px solid #455296;
+}
+
+input:focus {
+   background: #f5f6fc;
+}
+
+input.radio, input.checkbox {
+  margin-right: 0.5em;
+}
+
+label {
+  font-size: 1.3em;
+  text-align: left;
+}
+
+.esquerda {
+  width: 5em;
+  float: left;
+}
+
+.esquerda_maior {
+  width: 8em;
+  float: left;
+}
+
+.row {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+button {
+  background-color: transparent;
+  color: #04156b;
+  border: 1px solid #455296;
+  padding: 1px 3px 1px 3px;
+}
+
+button:hover {
+  background-color: #455296;
+  color: #fdfdff;
+  cursor: pointer;
+}
+
+.ponteiro {
+  cursor: pointer;
+}
+
+.first {
+  margin-left: 5em;
+}
+
+em {
+   display: inline;
+   font-size: 1.2em;
+   color: #760000;
+   padding-left: 0.75em;
+}
+
+.mensagem {
+   width: 100%;
+   padding-left: 5em;
+   font-size: 1.2em;
+   text-align: left;
+   color: #014203;
+}
+
+#menuNav {
+  list-style: none;
+  background-color: #fdfdff;
+  width: 23%;
+  float: left;
+  margin-top: 3em;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+#menuNav * {
+ padding-left: 20px;
+ padding-right: 20px;
+}
+
+#menuNav * * {
+ padding-left: 0;
+ padding-right: 0;
+}
+
+#menuNav a{
+	color: #04156b;
+	padding-left: 1.2em;
+}
+
+#menuNav a:link, a:visited {
+	text-decoration: none;
+}
+
+#menuNav a:hover, a:active {
+	text-decoration: underline;
+}
+
+.menu {
+	background: url(../img/plus.gif) no-repeat left;
+}
+
+.corrente {
+	background: url(../img/minus.gif) no-repeat left;
+}
+
+.submenu {
+  list-style: none;
+}
+
+.submenu li {
+  padding-left: 1em;
+  font-size: 1em;
+}
+
+p, li {
+  font-size: 1.4em;
+}
+
+fieldset {
+   margin: 3em 0 0 0;
+   padding: 3em 1em 1em 3em;
+   border: none;
+}
+
+legend {
+   font-size: 1.4em;
+   font-weight: bold;
+}
+
+.tools {
+   width: 100%;
+   overflow: hidden;
+   padding-top: 1em;
+}
+
+select {
+  border: 1px solid #455296;
+  background: #fdfdff;
+}
+
+table {
+   font-size: 1.3em;
+   border-collapse: collapse;
+   width: 80%;
+   border: 1px solid #666;
+   margin-left: 1px;
+}
+
+th, td {
+   padding: 0.1em 1em;
+}
+
+col {
+   border-right: 1px solid #ccc;
+}
+
+col#excluir {
+   border: none;
+}
+
+thead {
+   border-top: 1px solid #a5a5a5;
+   border-bottom: 1px solid #a5a5a5;
+}
+
+th {
+   font-weight: normal;
+/*   text-align: left;*/
+}
+
+tr.linha:hover {
+   background-color: #455296;
+   color: #fff;
+}
+
+thead tr:hover {
+   background-color: transparent;
+   color: inherit;
+}
+
+.icon {
+ margin: 10px 0 0 95%;
+}
+
+.maior {
+   width: 33em;
+}
+
+.data {
+   width: 6em;
+}
+
+.espaco {
+  margin-left: 4em;
+}
+
+textarea {
+   border: 1px solid #455296;
+}
+
+textarea:focus {
+   background: #f5f6fc;
+}
+
+div#aba{
+	background: #fff;
+	text-align: justify;
+	margin-bottom: 20px;
+	margin-top: 0;
+	padding: 10px 15px;
+	border: 1px solid #455296;
+}
+
+#aba_nav {
+  margin:0;
+  padding:3px 0 0 0;;
+  font-weight: bold;
+}
+
+#aba_nav li {
+  list-style: none;
+  margin-right: 6px;
+  display: inline;
+}
+#aba_nav li a {
+  padding: 3px 6px;
+  border: 1px solid #455296;
+  border-bottom: none;
+  background: #455296;
+  color: #fdfdff;
+  text-decoration: none;
+}
+#aba_nav li a:hover {
+  color: #fff;
+  background: #09c;
+  border-color: #455296;
+}
+#aba_nav li a.corrente {
+  color: #455296;
+  background: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.expirou {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.expirou a{
+  color: #760000;
+}
+
+.expirou a:link, a:visited {
+  text-decoration: none;
+}
+
+.expirou a:hover, a:active {
+  color:  #04156b;
+  text-decoration: underline;
+}
+
+.paginacao_off {
+  font-size: 1.4em;
+}
+
+#pages a{
+  font-size: 1.4em;
+  color: #04156b;
+}
+
+#pages a:link, a:visited {
+  text-decoration: none;
+}
+
+#pages a:hover, a:active {
+  text-decoration: underline;
+  color: #a52a2a;
+}
+
+#datacertame {
+ padding-left: 10px;
+ display: none;
+}
+
+/* css para janela modal */
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+
+#boxes .window {
+  position:absolute;
+  left:0;
+  top:0;
+  width:1024px;
+  height:400px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+}
+
+#boxes #dialog {
+  width:1024px;
+  height:400px;
+  padding:20px;
+  background-color: #fdfdff;
+  overflow: auto;
+}
+
+#dialog table {
+   font-size: 1.3em;
+   border-collapse: collapse;
+   width: 100%;
+   border: 1px solid #666;
+   margin-left: 1px;
+}
+
+#dialog a {
+  font-size: 1.3em;
+  color:#333;
+  text-decoration:none
+}
+
+#dialog a:hover {
+  color:#ccc;
+  text-decoration:none
+}
+
+#dialog p {
+  font-size: 1.3em;
+}
+
+#dialog .hand {
+  margin-left: 0.5em;
+}
+
+.close {
+  display:block;
+  text-align:right;
+}
+
+.descricao {
+  padding: 20px 0 40px 0;
+}
+
+#pergunta {
+  position: relative;
+  height: 60px;
+}
+
+#pergunta .resposta {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  margin-left: -55px;
+  width: 100px;
+}
+
+.banca {
+  width: 48.5%;
+}
+
+#bancafflch {
+  float: left;
+}
+
+#bancaexterna {
+  float: right;
+}
+
+.banca fieldset {
+  margin: 0;
+  border: 1px solid #ccc;
+  padding: 1em 1em 1em 1em;
+}
+
+.banca legend {
+  color: #ca0205;
+  font-weight: bold;
+}
+
+span {
+ margin-left: 0.5em;
+}
+
+.clear {
+  clear: both;
+}
+
+/* fim da css janela modal */
