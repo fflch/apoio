@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InstituionRequest;
 use Illuminate\Http\Request;
+use App\Institution;
 
 class InstitutionController extends Controller
 {
@@ -11,7 +13,7 @@ class InstitutionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('institutions.index');
     }
@@ -29,12 +31,16 @@ class InstitutionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\InstituionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InstituionRequest $request)
     {
-        //
+        $data = $request->all();
+
+        Institution::create($data);
+
+        return redirect()->route('institutions.index');
     }
 
     /**
