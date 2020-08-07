@@ -2,8 +2,8 @@
 
 @section('content')
 
-<form method="get" action="/institutions">
-<div class="">
+<form method="get" action="{{ route('institutions.index') }}">
+  <div class="">
     <div class="">
     <input type="text" class="" name="busca" value="">
 
@@ -11,7 +11,8 @@
         <button type="submit" class="btn btn-primary"> Buscar </button>
     </span>
     <br /><br />
-    </div>
+  </div>
+</form>
     <table class="table table-striped ">
       <thead>
         <tr>
@@ -25,14 +26,22 @@
         <tr>
           <td>{{ $institution->sigla }}</td>
           <td>{{ $institution->nome }}</td>
-          <td><a href="" class="btn btn-success">Editar</a> <a href=""
-          class="btn btn-danger">Deletar</a></td>
+          <td><a href="{{ route('institutions.edit', $institution->id) }}"
+                 class="btn btn-success">Editar</a>
+             <form method="post" action="{{ route('institutions.destroy',
+                $institution->id) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger"
+                onclick="return confirm('Você tem certeza que deseja excluir?')">
+                Excluir</button>
+             </form>
+          </td>
         </tr>
         @endforeach
       </tbody>
     </table>
     {!! $institutions->links() !!}
 </div>
-</form>
 
 @endsection

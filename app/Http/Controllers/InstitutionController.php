@@ -40,9 +40,7 @@ class InstitutionController extends Controller
     public function store(InstituionRequest $request)
     {
         $data = $request->all();
-
         Institution::create($data);
-
         return redirect()->route('institutions.index');
     }
 
@@ -63,9 +61,9 @@ class InstitutionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Institution $institution)
     {
-        //
+        return view('institutions.edit')->with('institution', $institution);
     }
 
     /**
@@ -77,7 +75,11 @@ class InstitutionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $institution = Institution::find($id);
+        if(!$institution)
+            return redirect()->back();
+        $institution->update($request->all());
+        return redirect()->route('institutions.index');
     }
 
     /**
@@ -88,6 +90,10 @@ class InstitutionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $institution = Institution::find($id);
+        if(!$institution)
+            return redirect()->back();
+        $institution->delete();
+        return redirect()->route('institutions.index');
     }
 }
