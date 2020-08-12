@@ -28,6 +28,6 @@ class InstitutionsSeeder extends Seeder
 
         Institution::create($institution1);
         Institution::create($institution2);
-        factory(Institution::class, 10)->create();
+        factory(Institution::class, 40)->create();
     }
 }

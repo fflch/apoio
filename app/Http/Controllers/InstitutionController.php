@@ -96,4 +96,20 @@ class InstitutionController extends Controller
         $institution->delete();
         return redirect()->route('institutions.index');
     }
+
+    /**
+     * Search institution
+     */
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+
+        $institution = new Institution;
+        $institutions = $institution->search($request->filter);
+
+        return view('institutions.index', [
+            'institutions' => $institutions,
+            'filters'      => $filters,
+        ]);
+    }
 }
