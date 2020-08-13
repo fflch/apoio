@@ -6,11 +6,9 @@
   <form method="post" action="{{ route('institutions.search') }}" class="form
         form-inline">
     @csrf
-    <input type="text" class="form-control" name="filter" placeholder="Filtrar:"
+    <input type="text" class="form-control" name="filter" placeholder=""
       value="{{ $filters['filter'] ?? '' }}">
-      <span class="">
-          <button type="submit" class="btn btn-primary"> Buscar </button>
-      </span>
+    <button type="submit" class="btn btn-primary ml-2"> Buscar </button>
   </form>
   <table class="table table-striped ">
     <thead>
