@@ -39,9 +39,10 @@ class InstitutionController extends Controller
      */
     public function store(InstituionRequest $request)
     {
-        $data = $request->all();
-        Institution::create($data);
-        return redirect()->route('institutions.index');
+        $validated = $request->validated();
+        $institution = Institution::create($validated);
+
+        return redirect()->route('institutions.index', $institution->id);
     }
 
     /**
