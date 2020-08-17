@@ -6,7 +6,7 @@ use App\Institution;
 use Faker\Generator as Faker;
 
 $factory->define(Institution::class, function (Faker $faker) {
-    $institution = new Institution;
+//    $institution = new Institution;
     return [
         'sigla'    => $faker->text($maxNbChars = 10),
         'instituicao'     => $faker->sentence($nbWords = 3, $variableNbWords = true),

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Institution;
+use App\Departament;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
         $this->call([
             InstitutionsSeeder::class,
+            DepartamentsSeeder::class,
         ]);
     }
 }
