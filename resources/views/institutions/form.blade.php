@@ -7,10 +7,10 @@
 </div>
 
 <div class="form-group row">
-  <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+  <label for="instituicao" class="col-sm-2 col-form-label">Nome</label>
   <div class="col-sm-10">
-    <input type="text" class="form-control" name="nome" id="nome"
-           value="{{ $institution->nome ?? old('nome') }}">
+    <input type="text" class="form-control" name="instituicao" id="instituicao"
+           value="{{ $institution->instituicao ?? old('instituicao') }}">
   </div>
 </div>
 

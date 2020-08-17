@@ -24,10 +24,10 @@ class InstituionRequest extends FormRequest
     public function rules()
     {
         return [
-            'sigla'   => 'required',
-            'nome'    => 'required',
-            'unidade' => 'required',
-            'local'   => 'required',
+            'sigla'       => 'required',
+            'instituicao' => 'required',
+            'unidade'     => 'required',
+            'local'       => 'required',
         ];
     }
 }

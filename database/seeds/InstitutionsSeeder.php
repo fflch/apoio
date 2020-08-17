@@ -14,14 +14,14 @@ class InstitutionsSeeder extends Seeder
     {
         $institution1 = [
             'sigla'   => 'FFLCH',
-            'nome'    => 'Faculdade de Filosofia, Letras e Ciências Humanas',
+            'instituicao'    => 'Faculdade de Filosofia, Letras e Ciências Humanas',
             'unidade' => 'São Paulo',
             'local'   => 'Campus Capital',
         ];
 
         $institution2 = [
             'sigla'   => 'ECA',
-            'nome'    => 'Escola de Comunicação e Arte',
+            'instituicao'    => 'Escola de Comunicação e Arte',
             'unidade' => 'São Paulo',
             'local'   => 'Campus Capital',
         ];
