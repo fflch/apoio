@@ -13,3 +13,7 @@
            value="{{ $departament->departamento ?? old('departamento') }}">
   </div>
 </div>
+
+<div class="">
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</div>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DepartamentRequest;
 use Illuminate\Http\Request;
+use App\Departament;
 
 class DepartamentController extends Controller
 {
@@ -13,7 +15,10 @@ class DepartamentController extends Controller
      */
     public function index()
     {
-        //
+        $departaments = Departament::paginate();
+        return view('departaments.index', [
+            'departaments' => $departaments,
+        ]);
     }
 
     /**
@@ -32,9 +37,12 @@ class DepartamentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartamentRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $departament = Departament::create($validated);
+
+        return redirect()->route('departaments.index', $departament->id);
     }
 
     /**
@@ -54,9 +62,9 @@ class DepartamentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Departament $departament)
     {
-        //
+        return view('departaments.edit')->with('departament', $departament);
     }
 
     /**
@@ -66,9 +74,15 @@ class DepartamentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DepartamentRequest $request, $id)
     {
-        //
+        $validated = $request->validated();
+
+        $departament = Departament::find($id);
+        if(!$departament)
+            return redirect()->back();
+        $departament->update($validated);
+        return redirect()->route('departaments.index');
     }
 
     /**
@@ -79,6 +93,26 @@ class DepartamentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $departament = Departament::find($id);
+        if(!$departament)
+            return redirect()->back();
+        $departament->delete();
+        return redirect()->route('departaments.index');
+    }
+
+    /**
+     * Search departament
+     */
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+
+        $departament = new Institution;
+        $departaments = $departament->search($request->filter);
+
+        return view('departaments.index', [
+            'departaments' => $departaments,
+            'filters'      => $filters,
+        ]);
     }
 }

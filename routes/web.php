@@ -6,6 +6,8 @@ Route::any('/institutions/search', 'InstitutionController@search')
     ->name('institutions.search');
 Route::resource('/institutions', 'InstitutionController');
 
+Route::any('/departaments/search', 'DepartamentController@search')
+    ->name('departaments.search');
 Route::resource('/departaments', 'DepartamentController');
 
 Route::get('/', function () {
