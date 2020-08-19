@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             InstitutionsSeeder::class,
             DepartamentsSeeder::class,
+            DesignationSeeder::class,
         ]);
     }
 }
