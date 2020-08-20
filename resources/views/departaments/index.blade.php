@@ -13,7 +13,7 @@
   <thead>
     <tr>
       <th scope="col">Sigla</th>
-      <th scope="col">Nome</th>
+      <th scope="col">Departamento</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
@@ -21,7 +21,7 @@
     @foreach($departaments as $departament)
     <tr>
       <td>{{ $departament->sigla }}</td>
-      <td>{{ $departament->nome }}</td>
+      <td>{{ $departament->departamento }}</td>
       <td><a href="{{ route('departaments.edit', $departament->id) }}"
              class="btn btn-success">Editar</a>
          <form method="post" action="{{ route('departaments.destroy',

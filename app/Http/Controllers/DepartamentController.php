@@ -107,7 +107,7 @@ class DepartamentController extends Controller
     {
         $filters = $request->except('_token');
 
-        $departament = new Institution;
+        $departament = new Departament;
         $departaments = $departament->search($request->filter);
 
         return view('departaments.index', [

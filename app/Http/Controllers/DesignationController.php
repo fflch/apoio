@@ -95,9 +95,27 @@ class DesignationController extends Controller
     public function destroy($designation)
     {
         $designation = Designation::find($designation);
-        if(!$designation)
+        if(!$designation){
             return redirect()->back();
+        };
         $designation->delete();
         return redirect()->route('designations.index');
     }
+
+    /**
+     * Search designation
+     */
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+
+        $designation = new Designation;
+        $designations = $designation->search($request->filter);
+
+        return view('designations.index', [
+            'designations' => $designations,
+            'filters'      => $filters,
+        ]);
+    }
+
 }
