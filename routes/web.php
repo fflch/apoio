@@ -14,6 +14,10 @@ Route::any('/designations/search', 'DesignationController@search')
     ->name('designations.search');
 Route::resource('/designations', 'DesignationController');
 
+Route::any('/roles/search', 'RoleController@search')
+    ->name('roles.search');
+Route::resource('/roles', 'RoleController');
+
 Route::get('/', function () {
     return view('welcome');
 });

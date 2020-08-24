@@ -38,6 +38,17 @@ $titulo =  [
     ],
 ];
 
+$cargo =  [
+    [
+        'text' => 'Inserir',
+        'url'  => 'roles/create'
+    ],
+    [
+        'text' => 'Gerenciar',
+        'url'  => '/roles',
+    ],
+];
+
 $submenu2 =  [
     [
         'text' => 'SubItem 1',
@@ -82,6 +93,10 @@ return [
         [
             'text'    => 'Títulos',
             'submenu' => $titulo,
+        ],
+        [
+            'text'    => 'Cargos',
+            'submenu' => $cargo,
         ],
         [
             'text'    => 'SubMenu2',
