@@ -16,6 +16,28 @@ $instituicao =  [
     ],
 ];
 
+$departamento =  [
+    [
+        'text' => 'Inserir',
+        'url'  => 'departaments/create'
+    ],
+    [
+        'text' => 'Gerenciar',
+        'url'  => '/departaments',
+    ],
+];
+
+$titulo =  [
+    [
+        'text' => 'Inserir',
+        'url'  => 'designations/create'
+    ],
+    [
+        'text' => 'Gerenciar',
+        'url'  => '/designations',
+    ],
+];
+
 $submenu2 =  [
     [
         'text' => 'SubItem 1',
@@ -52,6 +74,14 @@ return [
         [
             'text'    => 'Instituição',
             'submenu' => $instituicao,
+        ],
+        [
+            'text'    => 'Departamento',
+            'submenu' => $departamento,
+        ],
+        [
+            'text'    => 'Títulos',
+            'submenu' => $titulo,
         ],
         [
             'text'    => 'SubMenu2',
