@@ -14,7 +14,7 @@
     <tr>
       <th scope="col">Sigla</th>
       <th scope="col">Departamento</th>
-      <th scope="col">Ações</th>
+      <th scope="col" width="190">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -22,13 +22,14 @@
     <tr>
       <td>{{ $departament->sigla }}</td>
       <td>{{ $departament->departamento }}</td>
-      <td><a href="{{ route('departaments.edit', $departament->id) }}"
-             class="btn btn-success">Editar</a>
+      <td>
          <form method="post" action="{{ route('departaments.destroy',
             $departament->id) }}" class="form form-inline">
+           <a href="{{ route('departaments.edit', $departament->id) }}"
+             class="btn btn-success">Editar</a>
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger"
+           <button type="submit" class="btn btn-danger ml-2"
             onclick="return confirm('Você tem certeza que deseja excluir?')">
             Excluir</button>
          </form>

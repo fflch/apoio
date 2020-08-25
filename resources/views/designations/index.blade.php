@@ -13,22 +13,23 @@
   <thead>
     <tr>
       <th scope="col">Título</th>
-      <th scope="col">Ações</th>
+      <th scope="col" width="190">Ações</th>
     </tr>
   </thead>
   <tbody>
     @foreach($designations as $designation)
     <tr>
       <td>{{ $designation->titulo }}</td>
-      <td><a href="{{ route('designations.edit', $designation->id) }}"
-             class="btn btn-success">Editar</a>
+      <td>
          <form method="post" action="{{ route('designations.destroy',
             $designation->id) }}" class="form form-inline">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger"
-            onclick="return confirm('Você tem certeza que deseja excluir?')">
-            Excluir</button>
+           <a href="{{ route('designations.edit', $designation->id) }}"
+             class="btn btn-success">Editar</a>
+           @csrf
+           @method('DELETE')
+           <button type="submit" class="btn btn-danger ml-2"
+           onclick="return confirm('Você tem certeza que deseja excluir?')">
+           Excluir</button>
          </form>
       </td>
     </tr>

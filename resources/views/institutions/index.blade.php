@@ -13,24 +13,25 @@
   <thead>
     <tr>
       <th scope="col">Sigla</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Ações</th>
+      <th scope="col">Instituição</th>
+      <th scope="col" width="190">Ações</th>
     </tr>
   </thead>
   <tbody>
     @foreach($institutions as $institution)
     <tr>
       <td>{{ $institution->sigla }}</td>
-      <td>{{ $institution->nome }}</td>
-      <td><a href="{{ route('institutions.edit', $institution->id) }}"
-             class="btn btn-success">Editar</a>
+      <td>{{ $institution->instituicao }}</td>
+      <td>
          <form method="post" action="{{ route('institutions.destroy',
             $institution->id) }}" class="form form-inline">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger"
-            onclick="return confirm('Você tem certeza que deseja excluir?')">
-            Excluir</button>
+           <a href="{{ route('institutions.edit', $institution->id) }}"
+              class="btn btn-success">Editar</a>
+           @csrf
+           @method('DELETE')
+           <button type="submit" class="btn btn-danger ml-2"
+           onclick="return confirm('Você tem certeza que deseja excluir?')">
+           Excluir</button>
          </form>
       </td>
     </tr>

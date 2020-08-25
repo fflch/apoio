@@ -13,23 +13,24 @@
   <thead>
     <tr>
       <th scope="col">Cargo</th>
-      <th scope="col">Ações</th>
+      <th scope="col" width="190">Ações</th>
     </tr>
   </thead>
   <tbody>
     @foreach($roles as $role)
     <tr>
       <td>{{ $role->cargo }}</td>
-      <td><a href="{{ route('roles.edit', $role->id) }}"
-             class="btn btn-success">Editar</a>
-         <form method="post" action="{{ route('roles.destroy',
-            $role->id) }}" class="form form-inline">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger"
-            onclick="return confirm('Você tem certeza que deseja excluir?')">
-            Excluir</button>
-         </form>
+      <td>
+        <form method="post" action="{{ route('roles.destroy',
+           $role->id) }}" class="form form-inline">
+          <a href="{{ route('roles.edit', $role->id) }}"
+           class="btn btn-success">Editar</a>
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn btn-danger ml-2"
+          onclick="return confirm('Você tem certeza que deseja excluir?')">
+          Excluir</button>
+        </form>
       </td>
     </tr>
     @endforeach
