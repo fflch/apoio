@@ -3,7 +3,7 @@
 $instituicao =  [
     [
         'text' => 'Inserir',
-        'url'  => 'institutions/create'
+        'url'  => '/institutions/create'
     ],
     [
         'text' => 'Gerenciar',
@@ -19,7 +19,7 @@ $instituicao =  [
 $departamento =  [
     [
         'text' => 'Inserir',
-        'url'  => 'departaments/create'
+        'url'  => '/departaments/create'
     ],
     [
         'text' => 'Gerenciar',
@@ -30,7 +30,7 @@ $departamento =  [
 $titulo =  [
     [
         'text' => 'Inserir',
-        'url'  => 'designations/create'
+        'url'  => '/designations/create'
     ],
     [
         'text' => 'Gerenciar',
@@ -41,11 +41,22 @@ $titulo =  [
 $cargo =  [
     [
         'text' => 'Inserir',
-        'url'  => 'roles/create'
+        'url'  => '/roles/create'
     ],
     [
         'text' => 'Gerenciar',
         'url'  => '/roles',
+    ],
+];
+
+$tipo_contato =  [
+    [
+        'text' => 'Inserir',
+        'url'  => '/contact_types/create'
+    ],
+    [
+        'text' => 'Gerenciar',
+        'url'  => '/contact_types',
     ],
 ];
 
@@ -97,6 +108,10 @@ return [
         [
             'text'    => 'Cargos',
             'submenu' => $cargo,
+        ],
+        [
+            'text'    => 'Tipos de Contatos',
+            'submenu' => $tipo_contato,
         ],
         [
             'text'    => 'SubMenu2',

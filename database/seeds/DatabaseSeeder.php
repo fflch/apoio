@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Institution;
-use App\Departament;
-use App\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,7 +16,8 @@ class DatabaseSeeder extends Seeder
             InstitutionsSeeder::class,
             DepartamentsSeeder::class,
             DesignationSeeder::class,
-            RoleSeeder::class,
+            RolesSeeder::class,
+            ContactTypesSeeder::class,
         ]);
     }
 }

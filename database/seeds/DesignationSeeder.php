@@ -23,6 +23,5 @@ class DesignationSeeder extends Seeder
         Designation::create($designation1);
         Designation::create($designation2);
         factory(Designation::class, 20)->create();
-        //
     }
 }

@@ -18,6 +18,10 @@ Route::any('/roles/search', 'RoleController@search')
     ->name('roles.search');
 Route::resource('/roles', 'RoleController');
 
+Route::any('/contact_types/search', 'ContactTypeController@search')
+    ->name('contact_types.search');
+Route::resource('/contact_types', 'ContactTypeController');
+
 Route::get('/', function () {
     return view('welcome');
 });
