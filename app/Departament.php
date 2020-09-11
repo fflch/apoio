@@ -18,4 +18,8 @@ class Departament extends Model
 
         return $results;
     }
+
+    public function areas(){
+                return $this->hasMany('App\Area');
+    }
 }

@@ -60,6 +60,16 @@ $tipo_contato =  [
     ],
 ];
 
+$area =  [
+    [
+        'text' => 'Inserir',
+        'url'  => '/areas/create'
+    ],
+    [
+        'text' => 'Gerenciar',
+        'url'  => '/areas',
+    ],
+];
 $submenu2 =  [
     [
         'text' => 'SubItem 1',
@@ -112,6 +122,10 @@ return [
         [
             'text'    => 'Tipos de Contatos',
             'submenu' => $tipo_contato,
+        ],
+        [
+            'text'    => 'Area',
+            'submenu' => $area,
         ],
         [
             'text'    => 'SubMenu2',

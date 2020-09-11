@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             DesignationSeeder::class,
             RolesSeeder::class,
             ContactTypesSeeder::class,
+            AreasSeeder::class,
         ]);
     }
 }

@@ -22,6 +22,10 @@ Route::any('/contact_types/search', 'ContactTypeController@search')
     ->name('contact_types.search');
 Route::resource('/contact_types', 'ContactTypeController');
 
+Route::any('/areas/search', 'AreaController@search')
+    ->name('areas.search');
+Route::resource('/areas', 'AreaController');
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
