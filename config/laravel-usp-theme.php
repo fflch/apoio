@@ -1,75 +1,4 @@
 <?php
-
-$instituicao =  [
-    [
-        'text' => 'Inserir',
-        'url'  => '/institutions/create'
-    ],
-    [
-        'text' => 'Gerenciar',
-        'url'  => '/institutions',
-    ],
-    [
-        'text' => 'SubItem 3',
-        'url'  => '/subitem3',
-        'can'  => 'admin',
-    ],
-];
-
-$departamento =  [
-    [
-        'text' => 'Inserir',
-        'url'  => '/departaments/create'
-    ],
-    [
-        'text' => 'Gerenciar',
-        'url'  => '/departaments',
-    ],
-];
-
-$titulo =  [
-    [
-        'text' => 'Inserir',
-        'url'  => '/designations/create'
-    ],
-    [
-        'text' => 'Gerenciar',
-        'url'  => '/designations',
-    ],
-];
-
-$cargo =  [
-    [
-        'text' => 'Inserir',
-        'url'  => '/roles/create'
-    ],
-    [
-        'text' => 'Gerenciar',
-        'url'  => '/roles',
-    ],
-];
-
-$tipo_contato =  [
-    [
-        'text' => 'Inserir',
-        'url'  => '/contact_types/create'
-    ],
-    [
-        'text' => 'Gerenciar',
-        'url'  => '/contact_types',
-    ],
-];
-
-$area =  [
-    [
-        'text' => 'Inserir',
-        'url'  => '/areas/create'
-    ],
-    [
-        'text' => 'Gerenciar',
-        'url'  => '/areas',
-    ],
-];
 $submenu2 =  [
     [
         'text' => 'SubItem 1',
@@ -91,7 +20,8 @@ return [
     'menu' => [
         [
             'text' => 'Item 1',
-            'url'  => '/item1'
+            'url'  => '/item1',
+            'can'  => '',
         ],
         [
             'text' => 'Item 2',
@@ -104,28 +34,28 @@ return [
             'can'  => 'admin',
         ],
         [
-            'text'    => 'Instituição',
-            'submenu' => $instituicao,
+            'text' => 'Instituição',
+            'url'  => '/institutions',
         ],
         [
-            'text'    => 'Departamento',
-            'submenu' => $departamento,
+            'text' => 'Departamento',
+            'url'  => '/departaments',
         ],
         [
-            'text'    => 'Títulos',
-            'submenu' => $titulo,
+            'text' => 'Título',
+            'url'  => '/designations',
         ],
         [
-            'text'    => 'Cargos',
-            'submenu' => $cargo,
+            'text' => 'Cargo',
+            'url'  => '/roles',
         ],
         [
-            'text'    => 'Tipos de Contatos',
-            'submenu' => $tipo_contato,
+            'text' => 'Tipo de Contato',
+            'url'  => '/contact_types',
         ],
         [
-            'text'    => 'Area',
-            'submenu' => $area,
+            'text' => 'Área',
+            'url'  => '/areas',
         ],
         [
             'text'    => 'SubMenu2',
