@@ -1,7 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Institution;
+use App\Models\Institution;
 
 class InstitutionsSeeder extends Seeder
 {
@@ -28,6 +30,6 @@ class InstitutionsSeeder extends Seeder
 
         Institution::create($institution1);
         Institution::create($institution2);
-        factory(Institution::class, 40)->create();
+        Institution::factory()->count(40)->create();
     }
 }

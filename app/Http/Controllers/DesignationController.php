@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DesignationRequest;
-use App\Designation;
+use App\Models\Designation;
 use Illuminate\Http\Request;
 
 

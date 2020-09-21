@@ -1,7 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Area;
+use App\Models\Area;
 
 class AreasSeeder extends Seeder
 {
@@ -17,6 +19,6 @@ class AreasSeeder extends Seeder
             'area' => 'STI',
         ];
         Area::create($area1);
-        factory(Area::class, 20)->create();
+        Area::factory()->count(40)->create();
     }
 }

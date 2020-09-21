@@ -1,7 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Designation;
+use App\Models\Designation;
 
 class DesignationSeeder extends Seeder
 {
@@ -22,6 +24,6 @@ class DesignationSeeder extends Seeder
 
         Designation::create($designation1);
         Designation::create($designation2);
-        factory(Designation::class, 20)->create();
+        Designation::factory()->count(20)->create();
     }
 }

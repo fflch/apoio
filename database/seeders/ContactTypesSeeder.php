@@ -1,7 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\ContactType;
+use App\Models\ContactType;
 
 class ContactTypesSeeder extends Seeder
 {
@@ -22,6 +24,6 @@ class ContactTypesSeeder extends Seeder
 
         ContactType::create($tipo1);
         ContactType::create($tipo2);
-        factory(ContactType::class, 20)->create();
+        ContactType::factory()->count(20)->create();
     }
 }

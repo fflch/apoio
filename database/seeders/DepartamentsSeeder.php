@@ -1,7 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Departament;
+use App\Models\Departament;
 
 class DepartamentsSeeder extends Seeder
 {
@@ -24,6 +26,6 @@ class DepartamentsSeeder extends Seeder
 
         Departament::create($departamento1);
         Departament::create($departamento2);
-        factory(Departament::class, 20)->create();
+        Departament::factory()->count(20)->create();
     }
 }

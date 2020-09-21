@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Area;
+use App\Models\Area;
 use App\Http\Requests\AreaRequest;
-use App\Departament;
+use App\Models\Departament;
 
 class AreaController extends Controller
 {

@@ -1,7 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\Role;
+use App\Models\Role;
 
 class RolesSeeder extends Seeder
 {
@@ -22,6 +24,6 @@ class RolesSeeder extends Seeder
 
         Role::create($cargo1);
         Role::create($cargo2);
-        factory(Role::class, 20)->create();
+        Role::factory()->count(20)->create();
     }
 }

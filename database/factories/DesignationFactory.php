@@ -1,12 +1,29 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-use App\Designation;
-use Faker\Generator as Faker;
+use App\Models\Designation;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-$factory->define(Designation::class, function (Faker $faker) {
-    return [
-        'titulo' => $faker->unique()->text($maxNbChars = 20),
-    ];
-});
+class DesignationFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Designation::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'titulo' => $this->faker->unique()->text($maxNbChars = 20),
+        ];
+    }
+}

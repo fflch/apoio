@@ -1,12 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Departament;
+use App\Models\Departament;
 
 class Area extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['departament_id', 'area'];
 
     public function departament(){

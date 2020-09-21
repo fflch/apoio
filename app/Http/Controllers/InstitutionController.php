@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InstituionRequest;
 use Illuminate\Http\Request;
-use App\Institution;
+use App\Models\Institution;
 
 class InstitutionController extends Controller
 {
