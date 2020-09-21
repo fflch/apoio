@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Area;
-use App\AreaRequest;
+use App\Http\Requests\AreaRequest;
+use App\Departament;
 
 class AreaController extends Controller
 {
@@ -28,9 +29,14 @@ class AreaController extends Controller
      */
     public function create()
     {
-        return view('areas.create');
+        $departamentos = Departament::all()->sortBy('departamento')
+            ->pluck('departamento', 'id')->prepend('Selecione...', '');
+        $area = New Area;
+        return view('areas.create')->with([
+            'area' => $area,
+            'departamentos' => $departamentos
+        ]);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -39,8 +45,8 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
-        $validated = $request->validated();
-        $area = Area::create($validated);
+        //$validated = $request->validated();
+        $area = Area::create($request->only('departament_id','area'));
 
         return redirect()->route('areas.index', $area->id);
     }
@@ -64,7 +70,12 @@ class AreaController extends Controller
      */
     public function edit(Area $area)
     {
-        return view('areas.edit')->with('area', $area);
+        $departamentos = Departament::all()->sortBy('departamento')
+            ->pluck('departamento', 'id')->prepend('Selecione...', '');
+        return view('areas.edit')->with([
+            'area' => $area,
+            'departamentos' => $departamentos,
+        ]);
     }
 
     /**
@@ -76,12 +87,10 @@ class AreaController extends Controller
      */
     public function update(AreaRequest $request, $id)
     {
-        $validated = $request->validated();
-
         $area = Area::find($id);
         if(!$area)
             return redirect()->back();
-        $area->update($validated);
+        $area->update($request->only('departament_id', 'area'));
         return redirect()->route('areas.index');
     }
 

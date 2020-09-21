@@ -24,6 +24,7 @@ class AreaRequest extends FormRequest
     public function rules()
     {
         return [
+            'departament_id' => 'required|integer',
             'area' => 'required',
         ];
     }
