@@ -26,6 +26,6 @@ class DepartamentsSeeder extends Seeder
 
         Departament::create($departamento1);
         Departament::create($departamento2);
-        Departament::factory()->count(20)->create();
+        Departament::factory()->count(10)->create();
     }
 }

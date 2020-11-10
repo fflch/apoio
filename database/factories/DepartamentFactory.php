@@ -28,12 +28,3 @@ class DepartamentFactory extends Factory
         ];
     }
 }
-
-
-
-#$factory->define(Departament::class, function (Faker $faker) {
-#    return [
-#        'sigla'        => $faker->unique()->text($maxNbChars = 10),
-#        'departamento' => $faker->sentence($nbWords = 3, $variableNbWords = true),
-#    ];
-#});

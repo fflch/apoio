@@ -19,6 +19,6 @@ class AreasSeeder extends Seeder
             'area' => 'STI',
         ];
         Area::create($area1);
-        Area::factory()->count(40)->create();
+        Area::factory()->count(20)->create();
     }
 }

@@ -21,4 +21,9 @@ class Designation extends Model
 
         return $results;
     }
+
+    public function people() {
+        return $this->belongsToMany('App\Models\People');
+    }
+
 }

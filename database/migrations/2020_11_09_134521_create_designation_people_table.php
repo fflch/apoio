@@ -14,14 +14,15 @@ class CreateDesignationPeopleTable extends Migration
     public function up()
     {
         Schema::create('designation_people', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('designation_id');
-            $table->unsignedBigInteger('people_id');
+            //$table->id();
+            //$table->primary(['designation_id', 'people_id']);
+            $table->foreignId('designation_id')->constrained();
+            $table->foreignId('people_id')->constrained();
             $table->char('ativo', 1)->default('S');
             $table->timestamps();
 
-            $table->foreign('designation_id')->references('id')->on('designations');
-            $table->foreign('people_id')->references('id')->on('people');
+            //$table->foreign('designation_id')->references('id')->on('designations');
+            //$table->foreign('people_id')->references('id')->on('people');
         });
     }
 

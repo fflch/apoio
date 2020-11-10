@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             ContactTypesSeeder::class,
             AreasSeeder::class,
+            PeopleSeeder::class,
+            ContactsSeeder::class,
         ]);
     }
 }

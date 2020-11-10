@@ -11,4 +11,8 @@ class Contact extends Model
 
     protected $fillable = ['contato', 'people_id', 'contacttype_id'];
 
+    public function contacts() {
+        return $this->hasMany('App\Models\ContactType');
+    }
+
 }

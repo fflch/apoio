@@ -26,4 +26,10 @@ class People extends Model
         'observacao',
     ];
 
+    public function designations() {
+        return $this->belongsToMany('App\Models\Designation')
+                        ->withTimestamps()
+                        ->withPivot(['ativo']);
+    }
+
 }

@@ -51,5 +51,14 @@ class PeopleSeeder extends Seeder
         People::create($person1);
         People::create($person2);
         People::factory()->count(20)->create();
+
+        foreach(People::all() as $people) {
+            $designations = \App\Models\Designation::inRandomOrder()
+                ->take(rand(1,3))->pluck('id');
+            foreach($designations as $designation) {
+                $people->designations()->attach($designation,
+                    ['ativo' => 'N']);
+            }
+        }
     }
 }
