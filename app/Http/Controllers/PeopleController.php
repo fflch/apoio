@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\People;
 
 class PeopleController extends Controller
 {
@@ -13,7 +14,10 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        //
+        $peoples = People::paginate();
+        return view('people.index', [
+            'peoples' => $peoples,
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        //
+        return view('people.create');
     }
 
     /**

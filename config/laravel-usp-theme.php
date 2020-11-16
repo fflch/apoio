@@ -34,6 +34,10 @@ return [
             'can'  => 'admin',
         ],
         [
+            'text' => 'Pessoas',
+            'url'  => '/people',
+        ],
+        [
             'text' => 'Instituição',
             'url'  => '/institutions',
         ],

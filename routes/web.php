@@ -6,7 +6,12 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ContactTypeController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Route;
+
+Route::any('/people/search', [PeopleController::class,'search'])
+    ->name('people.search');
+Route::resource('/people', PeopleController::class);
 
 Route::any('/institutions/search', [InstitutionController::class,'search'])
     ->name('institutions.search');
