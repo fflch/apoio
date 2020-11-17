@@ -71,6 +71,7 @@
 </div>
 <div class="form-group">
   <label for="observacao">OBSERVACAO</label>
-  <input type="text" class="form-control" name="observacao" id="observacao"
-         value="{{ $people->observacao ?? old('observacao', ) }}">
+  <textarea class="form-control" name="observacao" id="observacao">
+         {{ $people->observacao ?? old('observacao', ) }}
+  </textarea>
 </div>
