@@ -23,26 +23,29 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active bg-light mx-3 my-3" id="pessoa" role="tabpanel"
           aria-labelledby="pessoa-tab">
-          <form method="POST" action="{{ route('people.store') }}">
+          <form method="POST" action="{{ route('people.update', $people->id) }}">
             @csrf
+            @method('PUT')
             @include('people.form')
-            <button type="submit" class="btn btn-info">Salvar</button>
+            <button type="submit" class="btn btn-info">Atualizar</button>
           </form>
         </div>
         <div class="tab-pane fade bg-light mx-3 my-3" id="contato" role="tabpanel"
           aria-labelledby="contato-tab">
           <form method="POST" action="{{ route('people.store') }}">
             @csrf
+            @method('PUT')
             @include('contacts.form')
-            <button type="submit" class="btn btn-info">Salvar</button>
+            <button type="submit" class="btn btn-info">Atualizar</button>
           </form>
         </div>
         <div class="tab-pane fade bg-light mx-3 my-3" id="titulacao" role="tabpanel"
           aria-labelledby="titulacao-tab">
           <form method="POST" action="{{ route('people.store') }}">
             @csrf
+            @method('PUT')
             @include('designation_people.form')
-            <button type="submit" class="btn btn-info">Salvar</button>
+            <button type="submit" class="btn btn-info">Atualizar</button>
           </form>
         </div>
       </div>

@@ -32,4 +32,15 @@ class People extends Model
                         ->withPivot(['ativo']);
     }
 
+    public function search($filter = null)
+    {
+        $results = $this->where(function ($query) use($filter) {
+            if($filter) {
+                $query->where('people', 'like', "%$filter%");
+            }
+        })->paginate();
+
+        return $results;
+    }
+
 }

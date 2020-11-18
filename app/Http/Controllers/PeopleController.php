@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PeopleRequest;
 use App\Models\People;
 
 class PeopleController extends Controller
@@ -36,9 +37,11 @@ class PeopleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PeopleRequest $request)
     {
-        //
+        $people = People::create($request->validated());
+
+        return redirect()->route('people.edit', $people->id);
     }
 
     /**
@@ -58,9 +61,9 @@ class PeopleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(People $person)
     {
-        //
+        return view('people.edit')->with('people', $person);
     }
 
     /**
@@ -70,9 +73,13 @@ class PeopleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PeopleRequest $request, $id)
     {
-        //
+        $people = People::find($id);
+        if(!$people)
+            return redirect()->back();
+        $people->update($request->validated());
+        return redirect()->route('people.edit', $people->id);
     }
 
     /**
@@ -83,6 +90,23 @@ class PeopleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $people = People::find($id);
+        if(!$people)
+            return redirect()->back();
+        $people->delete();
+        return redirect()->route('people.index');
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+
+        $people = new People;
+        $peoples = $people->search($request->filter);
+
+        return view('peoples.index', [
+            'peoples' => $peoples,
+            'filters' => $filters,
+        ]);
     }
 }
