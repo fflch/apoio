@@ -12,18 +12,18 @@
           aria-selected="true">Pessoa</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="contato-tab" data-toggle="tab"
+        <a class="nav-link" id="contato-tab"
           href="#contato" role="tab" aria-controls="contato">Contato</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="titulacao-tab" data-toggle="tab"
+        <a class="nav-link" id="titulacao-tab"
           href="#titulacao" role="tab" aria-controls="titulacao">Titulação</a>
       </li>
     </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active bg-light mx-3 my-3" id="pessoa" role="tabpanel"
           aria-labelledby="pessoa-tab">
-          <form method="POST" action="{{ route('people.update', $people->id) }}">
+          <form method="POST" id="formPeople" action="{{ route('people.update', $people->id) }}">
             @csrf
             @method('PUT')
             @include('people.form')
@@ -32,9 +32,9 @@
         </div>
         <div class="tab-pane fade bg-light mx-3 my-3" id="contato" role="tabpanel"
           aria-labelledby="contato-tab">
+          <button type="button" class="btn btn-info">Adicionar</button>
           <form method="POST" action="{{ route('people.store') }}">
             @csrf
-            @method('PUT')
             @include('contacts.form')
             <button type="submit" class="btn btn-info">Atualizar</button>
           </form>
@@ -57,7 +57,16 @@
 <script>
 
   $(document).ready( function () {
-    console.log('It Work');
+
+    $('#contato-tab').on('click', function(event) {
+      event.preventDefault();
+      console.log('hello moon');
+      var acao = $('#formPeople').attr('action').split('/');
+      if(acao.length == 5) {
+        $(this).tab('show');
+      }
+    });
+
   });
 
 </script>

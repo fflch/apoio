@@ -12,18 +12,18 @@
           aria-selected="true">Pessoa</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="contato-tab" data-toggle="tab"
+        <a class="nav-link" id="contato-tab"
           href="#contato" role="tab" aria-controls="contato">Contato</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="titulacao-tab" data-toggle="tab"
+        <a class="nav-link" id="titulacao-tab"
           href="#titulacao" role="tab" aria-controls="titulacao">Titulação</a>
       </li>
     </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active bg-light mx-3 my-3" id="pessoa" role="tabpanel"
           aria-labelledby="pessoa-tab">
-          <form method="POST" action="{{ route('people.store') }}">
+          <form method="POST" id="formPeople" action="{{ route('people.store') }}">
             @csrf
             @include('people.form')
             <button type="submit" class="btn btn-info">Salvar</button>
@@ -52,10 +52,6 @@
 
 @section('javascripts_bottom');
 <script>
-
-  $(document).ready( function () {
-    console.log('It Work');
-  });
 
 </script>
 @endsection
