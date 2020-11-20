@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ContactTypeController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::any('/people/search', [PeopleController::class,'search'])
@@ -36,6 +37,8 @@ Route::resource('/contact_types', ContactTypeController::class);
 Route::any('/areas/search', [AreaController::class,'search'])
     ->name('areas.search');
 Route::resource('/areas', AreaController::class);
+
+Route::resource('/contacts', ContactController::class);
 
 Route::get('/', function () {
     return view('app');
