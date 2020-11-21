@@ -15,11 +15,11 @@ class DesignationSeeder extends Seeder
     public function run()
     {
         $designation1 = [
-            'titulo'   => 'Assistente',
+            'nome'   => 'Assistente',
         ];
 
         $designation2 = [
-            'titulo'   => 'Doutor',
+            'nome'   => 'Doutor',
         ];
 
         Designation::create($designation1);

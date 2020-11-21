@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Contact;
+use App\Models\ContactPeople;
 
-class ContactsSeeder extends Seeder
+class ContactPeopleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,13 +16,13 @@ class ContactsSeeder extends Seeder
     {
         $contato1 = [
             'people_id' => 1,
-            'contact_type_id' => 1,
+            'contact_id' => 1,
             'contato' => 'meuemail@usp.br',
         ];
 
         $contato2 = [
             'people_id' => 2,
-            'contact_type_id' => 2,
+            'contact_id' => 2,
             'contato' => '91234-5678',
         ];
         Contact::create($contato1);

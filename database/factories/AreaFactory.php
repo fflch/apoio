@@ -25,7 +25,7 @@ class AreaFactory extends Factory
     {
         return [
             'departament_id' => Departament::factory(),
-            'area'      => $this->faker->name,
+            'nome'      => $this->faker->unique()->name,
         ];
     }
 }

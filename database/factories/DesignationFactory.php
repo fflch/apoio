@@ -23,7 +23,7 @@ class DesignationFactory extends Factory
     public function definition()
     {
         return [
-            'titulo' => $this->faker->unique()->text($maxNbChars = 20),
+            'nome' => $this->faker->unique()->text($maxNbChars = 20),
         ];
     }
 }

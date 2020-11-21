@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contact;
-use App\Http\Requests\ContactRequest;
+//use App\Http\Requests\ContactRequest;
+use App\Models\Contacts;
 
-class ContactController extends Controller
+class ContactPeopleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,11 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::paginate();
-        return view('contact.index', [
+        $contacts = Contacts::paginate();
+        return view('contacts.index', [
             'contacts' => $contacts,
         ]);
+        //
     }
 
     /**
@@ -28,7 +29,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contact.create');
+        return view('contacts.create');
     }
 
     /**
@@ -39,9 +40,9 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        $contact = Contact::create($request->validated());
+        $contacts = Contact::create($request->validated());
 
-        return redirect()->route('contact.index', $contact->id);
+        //return redirect()->route('people.edit', $people->id);
     }
 
     /**
@@ -61,9 +62,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        return view('contact.edit')->with('contact', $contact);
+        return view('contacts.edit')->with('contact', $contact);
     }
 
     /**
@@ -79,7 +80,7 @@ class ContactController extends Controller
         if(!$contact)
             return redirect()->back();
         $contact->update($request->validated());
-        return redirect()->route('contact.index');
+        return redirect()->route('contacts.edit', $contact->id);
     }
 
     /**
@@ -88,30 +89,12 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($contact)
+    public function destroy($id)
     {
-        $contact = Contact::find($contact);
-        if(!$contact){
+        $contact = Contact::find($id);
+        if(!$contact)
             return redirect()->back();
-        };
         $contact->delete();
-        return redirect()->route('contact.index');
+        return redirect()->route('contacts.index');
     }
-
-    /**
-     * Search contact_type
-     */
-    public function search(Request $request)
-    {
-        $filters = $request->except('_token');
-
-        $contact = new Contact;
-        $contact = $contact->search($request->filter);
-
-        return view('contact.index', [
-            'contact' => $contact,
-            'filters' => $filters,
-        ]);
-    }
-
 }

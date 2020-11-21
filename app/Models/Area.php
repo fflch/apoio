@@ -10,7 +10,7 @@ class Area extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['departament_id', 'area'];
+    protected $fillable = ['departament_id', 'nome'];
 
     public function departament(){
         return $this->belongsTo('App\Departament');

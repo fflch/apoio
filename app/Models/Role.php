@@ -9,13 +9,13 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['cargo'];
+    protected $fillable = ['nome'];
 
     public function search($filter = null)
     {
         $results = $this->where(function ($query) use($filter) {
             if($filter) {
-                $query->where('cargo', 'like', "%$filter%");
+                $query->where('nome', 'like', "%$filter%");
             }
         })->paginate();
 

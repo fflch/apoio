@@ -29,8 +29,8 @@ class AreaController extends Controller
      */
     public function create()
     {
-        $departamentos = Departament::all()->sortBy('departamento')
-            ->pluck('departamento', 'id')->prepend('Selecione...', '');
+        $departamentos = Departament::all()->sortBy('nome')
+            ->pluck('nome', 'id')->prepend('Selecione...', '');
         $area = New Area;
         return view('areas.create')->with([
             'area' => $area,
@@ -45,8 +45,7 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
-        //$validated = $request->validated();
-        $area = Area::create($request->only('departament_id','area'));
+        $area = Area::create($request->validated());
 
         return redirect()->route('areas.index', $area->id);
     }
@@ -70,8 +69,8 @@ class AreaController extends Controller
      */
     public function edit(Area $area)
     {
-        $departamentos = Departament::all()->sortBy('departamento')
-            ->pluck('departamento', 'id')->prepend('Selecione...', '');
+        $departamentos = Departament::all()->sortBy('nome')
+            ->pluck('nome', 'id')->prepend('Selecione...', '');
         return view('areas.edit')->with([
             'area' => $area,
             'departamentos' => $departamentos,
@@ -90,7 +89,7 @@ class AreaController extends Controller
         $area = Area::find($id);
         if(!$area)
             return redirect()->back();
-        $area->update($request->only('departament_id', 'area'));
+        $area->update($request->validated());
         return redirect()->route('areas.index');
     }
 
@@ -102,7 +101,7 @@ class AreaController extends Controller
      */
     public function destroy($id)
     {
-        $area = Departament::find($id);
+        $area = Area::find($id);
         if(!$area)
             return redirect()->back();
         $area->delete();

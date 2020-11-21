@@ -16,7 +16,7 @@ class CreateAreasTable extends Migration
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('departament_id');
-            $table->string('area');
+            $table->string('nome')->unique();
             $table->timestamps();
             $table->foreign('departament_id')->references('id')->on('departaments');
         });

@@ -24,8 +24,8 @@ class DepartamentRequest extends FormRequest
     public function rules()
     {
         return [
-            'sigla'        => 'required',
-            'departamento' => 'required',
+            'sigla' => 'required|unique:App\Models\Departament',
+            'nome'  => 'required|unique:App\Models\Departament',
         ];
     }
 }

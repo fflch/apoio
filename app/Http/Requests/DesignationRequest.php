@@ -24,7 +24,7 @@ class DesignationRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required',
+            'nome' => 'required|unique:App\Models\Designation',
         ];
     }
 }

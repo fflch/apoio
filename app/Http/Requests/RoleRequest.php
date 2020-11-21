@@ -24,7 +24,7 @@ class RoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'cargo' => 'required',
+            'nome' => 'required|unique:App\Models\Role',
         ];
     }
 }

@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\ContactType;
+use App\Models\ContactPeople;
+use App\Models\People;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class ContactTypeFactory extends Factory
+class ContactPeopleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = ContactType::class;
+    protected $model = ContactPeople::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +23,9 @@ class ContactTypeFactory extends Factory
     public function definition()
     {
         return [
-            'tipo' => $this->faker->unique()->text($maxNbChars = 20),
+            'people_id' => People::factory()->create()->id,
+            'contact_id' => 1,
+            'contato' => $this->faker->email,
         ];
     }
 }

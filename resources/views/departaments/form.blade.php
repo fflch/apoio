@@ -5,7 +5,7 @@
 </div>
 
 <div class="form-group">
-  <label for="departamento">Departamento</label>
-  <input type="text" class="form-control" name="departamento" id="departamento"
-         value="{{ $departament->departamento ?? old('departamento') }}">
+  <label for="nome">Departamento</label>
+  <input type="text" class="form-control" name="nome" id="nome"
+         value="{{ $departament->nome ?? old('nome') }}">
 </div>

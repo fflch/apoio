@@ -32,6 +32,11 @@ class People extends Model
                         ->withPivot(['ativo']);
     }
 
+    public function contacts()
+    {
+        return $this->hasMany('App\Models\Contact');
+    }
+
     public function search($filter = null)
     {
         $results = $this->where(function ($query) use($filter) {

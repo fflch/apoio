@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactTypeRequest extends FormRequest
+class InstitutionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class ContactTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo' => 'required',
+            'sigla'   => 'required|unique:App\Models\Institution',
+            'nome'    => 'required',
+            'unidade' => 'required',
+            'local'   => 'required',
         ];
     }
 }

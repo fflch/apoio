@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Role;
 
-class RolesSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,11 @@ class RolesSeeder extends Seeder
     public function run()
     {
         $cargo1 = [
-            'cargo' => 'Diretor',
+            'nome' => 'Diretor',
         ];
 
         $cargo2 = [
-            'cargo' => 'Chefe de Departamento',
+            'nome' => 'Chefe de Departamento',
         ];
 
         Role::create($cargo1);

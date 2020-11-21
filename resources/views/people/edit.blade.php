@@ -51,11 +51,6 @@
       </div>
   </div>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -70,7 +65,7 @@
           <form method="POST" action="{{ route('contacts.store') }}">
             @csrf
             @include('contacts.form')
-            <button type="submit" class="btn btn-info">Atualizar</button>
+            <button type="submit" class="btn btn-info">Salvar</button>
           </form>
       </div>
     </div>

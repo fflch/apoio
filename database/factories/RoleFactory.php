@@ -23,7 +23,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'cargo' => $this->faker->unique()->text($maxNbChars = 30),
+            'nome' => $this->faker->unique()->text($maxNbChars = 30),
         ];
     }
 }

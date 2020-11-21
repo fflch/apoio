@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Area;
 
-class AreasSeeder extends Seeder
+class AreaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class AreasSeeder extends Seeder
     {
         $area1 = [
             'departament_id' => 1,
-            'area' => 'STI',
+            'nome' => 'STI',
         ];
         Area::create($area1);
         Area::factory()->count(20)->create();

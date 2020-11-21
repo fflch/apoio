@@ -22,7 +22,7 @@
     @foreach($institutions as $institution)
     <tr>
       <td>{{ $institution->sigla }}</td>
-      <td>{{ $institution->instituicao }}</td>
+      <td>{{ $institution->nome }}</td>
       <td>
            <a href="{{ route('institutions.edit', $institution->id) }}"
               class="btn btn-success">Editar</a>

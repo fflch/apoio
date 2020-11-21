@@ -23,8 +23,8 @@ class InstitutionFactory extends Factory
     public function definition()
     {
         return [
-            'sigla' => $this->faker->text($maxNbChars = 10),
-            'instituicao' => $this->faker->sentence($nbWords = 3,
+            'sigla' => $this->faker->unique()->text($maxNbChars = 10),
+            'nome' => $this->faker->sentence($nbWords = 3,
                 $variableNbWords = true),
             'unidade' => $this->faker->sentence($nbWords = 2,
                 $variableNbWords = true),

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\InstituionRequest;
+use App\Http\Requests\InstitutionRequest;
 use Illuminate\Http\Request;
 use App\Models\Institution;
 
@@ -34,10 +34,10 @@ class InstitutionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\InstituionRequest  $request
+     * @param  \App\Http\Requests\InstitutionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InstituionRequest $request)
+    public function store(InstitutionRequest $request)
     {
         $validated = $request->validated();
         $institution = Institution::create($validated);

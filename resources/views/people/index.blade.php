@@ -13,14 +13,22 @@
 <table class="table table-striped mt-4">
   <thead>
     <tr>
+      <th scope="col">NUSP</th>
       <th scope="col">Nome</th>
+      <th scope="col">Contato</th>
       <th scope="col" width="190">Ações</th>
     </tr>
   </thead>
   <tbody>
     @foreach($peoples as $people)
     <tr>
+      <td>{{ $people->nusp }}</td>
       <td>{{ $people->nome }}</td>
+      <td>
+        @foreach($people->contacts as $contact)
+        <span>{{ $contact->nome }}</span>
+        @endforeach
+      </td>
       <td>
            <a href="{{ route('people.edit', $people->id) }}"
               class="btn btn-success">Editar</a>

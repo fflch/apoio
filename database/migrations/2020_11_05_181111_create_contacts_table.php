@@ -15,13 +15,8 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('people_id');
-            $table->unsignedBigInteger('contact_type_id');
-            $table->string('contato');
+            $table->string('nome')->unique();
             $table->timestamps();
-
-            $table->foreign('people_id')->references('id')->on('people');
-            $table->foreign('contact_type_id')->references('id')->on('contact_types');
         });
     }
 

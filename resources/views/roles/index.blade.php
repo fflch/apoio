@@ -20,7 +20,7 @@
   <tbody>
     @foreach($roles as $role)
     <tr>
-      <td>{{ $role->cargo }}</td>
+      <td>{{ $role->nome }}</td>
       <td>
           <a href="{{ route('roles.edit', $role->id) }}"
            class="btn btn-success">Editar</a>

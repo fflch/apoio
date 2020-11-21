@@ -1,8 +1,9 @@
 <div class="form-group">
   <label for="tipo">Tipo</label>
-  <select type="select" class="form-control" name="tipo" id="tipo">
+  <select type="select" class="form-control" name="contact_type_id"
+    id="contact_type_id">
     <option>Selecione o Tipo</option>
-    <option>E-mail</option>
+    <option value="1">E-mail</option>
   </select>
 </div>
 <div class="form-group">

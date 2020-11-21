@@ -54,8 +54,8 @@ return [
             'url'  => '/roles',
         ],
         [
-            'text' => 'Tipo de Contato',
-            'url'  => '/contact_types',
+            'text' => 'Contato',
+            'url'  => '/contact',
         ],
         [
             'text' => 'Área',

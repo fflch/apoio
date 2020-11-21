@@ -3,8 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Contact;
-use App\Models\People;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ContactFactory extends Factory
 {
@@ -23,9 +23,7 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            'people_id' => People::factory()->create()->id,
-            'contact_type_id' => 1,
-            'contato' => $this->faker->email,
+            'nome' => $this->faker->unique()->text($maxNbChars = 20),
         ];
     }
 }

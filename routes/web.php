@@ -4,7 +4,7 @@ use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\ContactTypeController;
+//use App\Http\Controllers\ContactTypeController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ContactController;
@@ -30,15 +30,13 @@ Route::any('/roles/search', [RoleController::class,'search'])
     ->name('roles.search');
 Route::resource('/roles', RoleController::class);
 
-Route::any('/contact_types/search', [ContactTypeController::class,'search'])
-    ->name('contact_types.search');
-Route::resource('/contact_types', ContactTypeController::class);
+Route::any('/contact/search', [ContactController::class,'search'])
+    ->name('contact.search');
+Route::resource('/contact', ContactController::class);
 
 Route::any('/areas/search', [AreaController::class,'search'])
     ->name('areas.search');
 Route::resource('/areas', AreaController::class);
-
-Route::resource('/contacts', ContactController::class);
 
 Route::get('/', function () {
     return view('app');

@@ -5,9 +5,9 @@
 </div>
 
 <div class="form-group">
-  <label for="instituicao">Nome</label>
-  <input type="text" class="form-control" name="instituicao" id="instituicao"
-         value="{{ $institution->instituicao ?? old('instituicao') }}">
+  <label for="nome">Nome</label>
+  <input type="text" class="form-control" name="nome" id="nome"
+         value="{{ $institution->nome ?? old('nome') }}">
 </div>
 
 <div class="form-group">

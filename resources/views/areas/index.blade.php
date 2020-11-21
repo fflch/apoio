@@ -20,7 +20,7 @@
   <tbody>
     @foreach($areas as $area)
     <tr>
-      <td>{{ $area->area }}</td>
+      <td>{{ $area->nome }}</td>
       <td>
            <a href="{{ route('areas.edit', $area->id) }}"
              class="btn btn-success">Editar</a>

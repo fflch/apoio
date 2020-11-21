@@ -24,7 +24,7 @@ class DepartamentFactory extends Factory
     {
         return [
             'sigla'        => $this->faker->unique()->text($maxNbChars = 10),
-            'departamento' => $this->faker->sentence($nbWords = 3, $variableNbWords = true),
+            'nome' => $this->faker->sentence($nbWords = 3, $variableNbWords = true),
         ];
     }
 }

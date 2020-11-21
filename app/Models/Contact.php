@@ -9,10 +9,16 @@ class Contact extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['contato', 'people_id', 'contacttype_id'];
+    protected $fillable = ['nome'];
 
-    public function contacts() {
-        return $this->hasMany('App\Models\ContactType');
+    public function search($filter = null)
+    {
+        $results = $this->where(function ($query) use($filter) {
+            if($filter) {
+                $query->where('nome', 'like', "%$filter%");
+            }
+        })->paginate();
+
+        return $results;
     }
-
 }

@@ -24,9 +24,7 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'people_id' => 'required',
-            'contact_type_id' => 'required',
-            'contato' => 'required',
+            'nome' => 'required',
         ];
     }
 }

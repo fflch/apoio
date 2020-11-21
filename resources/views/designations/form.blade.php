@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label for="titulo">Título</label>
-  <input type="text" class="form-control" name="titulo" id="titulo"
-         value="{{ $designation->titulo ?? old('titulo') }}">
+  <label for="nome">Título</label>
+  <input type="text" class="form-control" name="nome" id="nome"
+         value="{{ $designation->nome ?? old('nome') }}">
 </div>

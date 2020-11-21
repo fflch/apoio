@@ -25,7 +25,7 @@ class AreaRequest extends FormRequest
     {
         return [
             'departament_id' => 'required|integer',
-            'area' => 'required',
+            'nome' => 'required|unique:App\Models\Area',
         ];
     }
 }

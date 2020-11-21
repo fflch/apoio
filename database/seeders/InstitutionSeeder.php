@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Institution;
 
-class InstitutionsSeeder extends Seeder
+class InstitutionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,14 +16,14 @@ class InstitutionsSeeder extends Seeder
     {
         $institution1 = [
             'sigla'   => 'FFLCH',
-            'instituicao'    => 'Faculdade de Filosofia, Letras e Ciências Humanas',
+            'nome'    => 'Faculdade de Filosofia, Letras e Ciências Humanas',
             'unidade' => 'São Paulo',
             'local'   => 'Campus Capital',
         ];
 
         $institution2 = [
             'sigla'   => 'ECA',
-            'instituicao'    => 'Escola de Comunicação e Arte',
+            'nome'    => 'Escola de Comunicação e Arte',
             'unidade' => 'São Paulo',
             'local'   => 'Campus Capital',
         ];

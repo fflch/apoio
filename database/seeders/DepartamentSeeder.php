@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Departament;
 
-class DepartamentsSeeder extends Seeder
+class DepartamentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,12 +16,12 @@ class DepartamentsSeeder extends Seeder
     {
         $departamento1 = [
             'sigla'   => 'SVG',
-            'departamento'    => 'Serviços Gerais',
+            'nome'    => 'Serviços Gerais',
         ];
 
         $departamento2 = [
             'sigla'   => 'STI',
-            'departamento'    => 'Seção Técnica de Informática',
+            'nome'    => 'Seção Técnica de Informática',
         ];
 
         Departament::create($departamento1);
