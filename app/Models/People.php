@@ -34,7 +34,9 @@ class People extends Model
 
     public function contacts()
     {
-        return $this->hasMany('App\Models\Contact');
+        return $this->belongsToMany('App\Models\Contact')
+                        ->withTimestamps()
+                        ->withPivot(['contato']);
     }
 
     public function search($filter = null)

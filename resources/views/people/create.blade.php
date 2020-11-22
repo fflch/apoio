@@ -33,7 +33,7 @@
           aria-labelledby="contato-tab">
           <form method="POST" action="{{ route('people.store') }}">
             @csrf
-            @include('contacts.form')
+            @include('contact.form')
             <button type="submit" class="btn btn-info">Salvar</button>
           </form>
         </div>

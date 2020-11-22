@@ -35,7 +35,7 @@
           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Adicionar</button>
           <form method="POST" action="">
             @csrf
-            @include('contacts.form')
+            @include('contact.form')
             <button type="submit" class="btn btn-info">Atualizar</button>
           </form>
         </div>
@@ -62,9 +62,9 @@
         </button>
       </div>
       <div class="modal-body">
-          <form method="POST" action="{{ route('contacts.store') }}">
+          <form method="POST" action="{{ route('contact.store') }}">
             @csrf
-            @include('contacts.form')
+            @include('contact_people.form')
             <button type="submit" class="btn btn-info">Salvar</button>
           </form>
       </div>
