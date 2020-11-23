@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\People;
+use Illuminate\Support\Str;
+use Illuminate\Support\Enumerable;
 
 class PeopleSeeder extends Seeder
 {
@@ -50,7 +52,7 @@ class PeopleSeeder extends Seeder
 
         People::create($person1);
         People::create($person2);
-        People::factory()->count(20)->create();
+        People::factory()->count(18)->create();
 
         foreach(People::all() as $people) {
             $designations = \App\Models\Designation::inRandomOrder()
@@ -58,6 +60,18 @@ class PeopleSeeder extends Seeder
             foreach($designations as $designation) {
                 $people->designations()->attach($designation,
                     ['ativo' => 'N']);
+            }
+            $contacts = \App\Models\Contact::inRandomOrder()
+                ->take(rand(1,2))->pluck('id');
+            foreach($contacts as $contact) {
+                if($contact > 1 ) {
+                    $people->contacts()
+                           ->attach($contact, ['contato' => '91234-4567']);
+                }
+                else {
+                    $people->contacts()
+                           ->attach($contact, ['contato' => Str::random(10) . '@gmail.com']);
+                }
             }
         }
     }
