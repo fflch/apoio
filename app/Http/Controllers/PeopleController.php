@@ -16,7 +16,6 @@ class PeopleController extends Controller
     public function index()
     {
         $peoples = People::with('contacts')->paginate();
-        //$peoples = People::paginate();
         return view('people.index', [
             'peoples' => $peoples,
         ]);
@@ -40,8 +39,7 @@ class PeopleController extends Controller
      */
     public function store(PeopleRequest $request)
     {
-        $people = People::create($request->all());
-        //$people = People::create($request->validated());
+        $people = People::create($request->validated());
         return redirect()->route('people.edit', $people->id);
     }
 
