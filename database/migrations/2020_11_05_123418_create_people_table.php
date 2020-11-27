@@ -15,21 +15,24 @@ class CreatePeopleTable extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('institution_id')->nullable();
+            $table->unsignedBigInteger('designation_id')->nullable();
             $table->string('nusp')->unique();
             $table->string('nome');
-            $table->string('unidade')->nullable();
             $table->string('endereco')->nullable();
             $table->string('complemento')->nullable();
             $table->string('cidade')->nullable();
             $table->string('estado')->nullable();
             $table->string('cep')->nullable();
-            $table->string('instituicao')->nullable();
             $table->string('identidade')->nullable();
             $table->string('pispasep')->nullable();
             $table->string('cpf')->nullable();
             $table->string('passaport')->nullable();
             $table->text('observacao')->nullable();
             $table->timestamps();
+
+            $table->foreign('institution_id')->references('id')->on('institutions');
+            $table->foreign('designation_id')->references('id')->on('designations');
         });
     }
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PeopleRequest;
 use App\Models\People;
+use App\Models\Institution;
+use App\Models\Designation;
+use App\Models\Contact;
 
 class PeopleController extends Controller
 {
@@ -28,7 +31,12 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view('people.create');
+        return view('people.create', [
+            'institutions' => $this->institution(),
+            'designations' => $this->designation(),
+            'estados' => People::estadoOptions(),
+            'contacts' => $this->contact(),
+        ]);
     }
 
     /**
@@ -62,7 +70,13 @@ class PeopleController extends Controller
      */
     public function edit(People $person)
     {
-        return view('people.edit')->with('people', $person);
+        return view('people.edit')->with([
+            'people' => $person,
+            'institutions' => $this->institution(),
+            'designations' => $this->designation(),
+            'estados' => People::estadoOptions(),
+            'contacts' => $this->contact(),
+        ]);
     }
 
     /**
@@ -107,5 +121,23 @@ class PeopleController extends Controller
             'peoples' => $peoples,
             'filters' => $filters,
         ]);
+    }
+
+    private function institution()
+    {
+        return Institution::all()->sortBy('nome')->pluck('nome', 'id')
+                                 ->prepend('Selecione...', '');
+    }
+
+    private function designation()
+    {
+        return Designation::all()->sortBy('nome')->pluck('nome', 'id')
+                                 ->prepend('Selecione...', '');
+    }
+
+    private function contact()
+    {
+        return Contact::all()->sortBy('nome')->pluck('nome', 'id')
+                             ->prepend('Selecione...', '');
     }
 }

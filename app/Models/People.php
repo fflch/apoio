@@ -12,13 +12,13 @@ class People extends Model
     protected $fillable = [
         'nusp',
         'nome',
-        'unidade',
+        'institution_id',
+        'designation_id',
         'endereco',
         'complemento',
         'cidade',
         'estado',
         'cep',
-        'instituicao',
         'identidade',
         'pispasep',
         'cpf',
@@ -27,9 +27,7 @@ class People extends Model
     ];
 
     public function designations() {
-        return $this->belongsToMany('App\Models\Designation')
-                        ->withTimestamps()
-                        ->withPivot(['ativo']);
+        return $this->belongsTo('App\Models\Designation');
     }
 
     public function contacts()
@@ -48,6 +46,39 @@ class People extends Model
         })->paginate();
 
         return $results;
+    }
+
+    public static function estadoOptions()
+    {
+        return [
+            'AC' => 'Acre',
+            'AL' => 'Alagoas',
+            'AP' => 'Amapá',
+            'AM' => 'Amazonas',
+            'BA' => 'Bahia',
+            'CE' => 'Ceará',
+            'DF' => 'Distrito Federal',
+            'ES' => 'Espírito Santo',
+            'GO' => 'Goiás',
+            'MA' => 'Maranhão',
+            'MT' => 'Mato Grosso',
+            'MS' => 'Mato Grosso do Sul',
+            'MG' => 'Minas Gerais',
+            'PA' => 'Pará',
+            'PB' => 'Paraíba',
+            'PR' => 'Paraná',
+            'PE' => 'Pernambuco',
+            'PI' => 'Piauí',
+            'RJ' => 'Rio de Janeiro',
+            'RN' => 'Rio Grande do Norte',
+            'RS' => 'Rio Grande do Sul',
+            'RO' => 'Rondônia',
+            'RR' => 'Roraima',
+            'SC' => 'Santa Catarina',
+            'SP' => 'São Paulo',
+            'SE' => 'Sergipe',
+            'TO' => 'Tocantins'
+        ];
     }
 
 }

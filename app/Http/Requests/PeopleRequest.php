@@ -24,7 +24,7 @@ class PeopleRequest extends FormRequest
     public function rules()
     {
         return [
-            'nusp' => 'required|unique:App\Models\People',
+            'nusp' => 'required',
             'nome' => 'required',
             'unidade' => '',
             'endereco' => '',

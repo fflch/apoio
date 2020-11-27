@@ -9,14 +9,40 @@
     <input type="text" class="form-control" name="nome" id="nome"
            value="{{ $people->nome ?? old('nome', ) }}">
   </div>
+  <div class="form-group col-md-4">
+    <label for="designation_id">Título</label>
+    <select type="select" class="form-control" name="designation_id"
+           id="designation_id">
+           @foreach($designations as $id => $nome)
+           @if(old('designation_id') == '' and isset($people->designation_id))
+           <option value="{{ $id }}"
+           {{ ( $people->designation_id == $id ) ? 'selected' : '' }}>
+           {{ $nome }}</option>
+           @else
+           <option value="{{ $id }}"
+           {{ ( old('designation_id') == $id ) ? 'selected' : '' }}>{{ $nome }}
+           </option>
+           @endif
+           @endforeach
+    </select>
+  </div>
 </div>
 <div class="form-row">
   <div class="form-group col-md-6">
-    <label for="instituicao">Instituição</label>
-    <select type="select" class="form-control" name="instituicao" id="instituicao"
-           value="{{ $people->instituicao ?? old('instituicao', ) }}">
-      <option value="">Selecione a Instituição</option>
-      <option value="SP">FFLCH</option>
+    <label for="institution_id">Instituição</label>
+    <select type="select" class="form-control"
+                          name="institution_id" id="institution_id">
+           @foreach($institutions as $id => $nome)
+           @if(old('institution_id') == '' and isset($people->institution_id))
+           <option value="{{ $id }}"
+           {{ ( $people->institution_id == $id ) ? 'selected' : '' }}>
+           {{ $nome }}</option>
+           @else
+           <option value="{{ $id }}"
+           {{ ( old('institution_id') == $id ) ? 'selected' : '' }}>{{ $nome }}
+           </option>
+           @endif
+           @endforeach
     </select>
   </div>
 </div>
@@ -39,11 +65,19 @@
            value="{{ $people->cidade ?? old('cidade', ) }}">
   </div>
   <div class="form-group col-md-3">
-    <label for="estado">UF</label>
-    <select type="select" class="form-control" name="estado" id="estado"
-           value="{{ $people->estado ?? old('estado', ) }}">
-      <option value="">Selecione o Estado</option>
-      <option value="SP">São Paulo</option>
+    <label for="estado">Estado</label>
+    <select type="select" class="form-control" name="estado" id="estado">
+      <option value="">Selecione...</option>
+      @foreach($estados as $key => $value)
+      @if(old('estado') == '' and isset($people->estado))
+      <option value="{{ $key }}"
+      {{ ( $people->estado == $key ) ? 'selected' : '' }}>{{ $value }}</option>
+      @else
+      <option value="{{ $key }}"
+      {{ ( old('estado') == $key ) ? 'selected' : '' }}>{{ $value }}
+      </option>
+      @endif
+      @endforeach
     </select>
   </div>
   <div class="form-group col-md-3">
@@ -86,9 +120,18 @@
       <div class="col-sm">
         <div class="form-group">
           <label for="contacts">Tipo</label>
-          <select name="contacts[]" class="form-control">
-            <option value="">Selecione o Contato...</option>
-            <option value="1">E-mail</option>
+          <select name="contacts_id[]" class="form-control">
+           @foreach($contacts as $id => $nome)
+           @if(old('contacts_id') == '' and isset($people->contact_id))
+           <option value="{{ $id }}"
+           {{ ( $people->contact_id == $id ) ? 'selected' : '' }}>
+           {{ $nome }}</option>
+           @else
+           <option value="{{ $id }}"
+           {{ ( old('contacts_id') == $id ) ? 'selected' : '' }}>{{ $nome }}
+           </option>
+           @endif
+           @endforeach
           </select>
         </div>
       </div>

@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use App\Models\People;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Institution;
+use App\Models\Designation;
 
 class PeopleFactory extends Factory
 {
@@ -24,13 +26,13 @@ class PeopleFactory extends Factory
         return [
             'nusp' => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
             'nome' => $this->faker->name,
-            'unidade' => $this->faker->text($maxNbChars = 30),
+            'institution_id' => Institution::inRandomOrder()->pluck('id')->first(),
+            'designation_id' => Designation::inRandomOrder()->pluck('id')->first(),
             'endereco' => $this->faker->address,
             'complemento' => $this->faker->text($maxNbChars = 20),
             'cidade' => $this->faker->city,
-            'estado' => $this->faker->state,
+            'estado' => array_rand(People::estadoOptions()),
             'cep' => $this->faker->postcode,
-            'instituicao' => $this->faker->text($maxNbChars = 30),
             'identidade' => $this->faker->rg,
             'pispasep' => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
             'cpf' => $this->faker->cpf,

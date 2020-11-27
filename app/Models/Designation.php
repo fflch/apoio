@@ -23,7 +23,7 @@ class Designation extends Model
     }
 
     public function people() {
-        return $this->belongsToMany('App\Models\People');
+        return $this->hasMany('App\Models\People');
     }
 
 }
