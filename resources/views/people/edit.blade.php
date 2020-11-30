@@ -15,19 +15,35 @@
 </div>
 @endsection
 
-@section('javascripts_bottom');
+@section('javascripts_bottom')
 <script>
 
   $(document).ready( function () {
 
-    $('#contato-tab').on('click', function(event) {
-      event.preventDefault();
-      console.log('hello moon');
-      var acao = $('#formPeople').attr('action').split('/');
-      if(acao.length == 5) {
-        $(this).tab('show');
-      }
-    });
+    let row_number = {{ count(old('contato_tipo', $people->contacts->count() ?
+      $people->contacts : [''])) }};
+
+    $("#add_row").click(function(e){
+      e.preventDefault();
+      let new_row_number = row_number - 1;
+
+      console.log($('#contact' + row_number).html());
+      /*$('#contact' + row_number).html($('#contact' +
+            new_row_number).html()).find('div.col-sm');*/
+
+      $('#contact-div').append('<div class="row" id="contact' +
+(row_number + 1) + '"></div>');
+          row_number++;
+        });
+
+        $("#delete_row").click(function(e){
+          e.preventDefault();
+          if(row_number > 1){
+            $("#product" + (row_number - 1)).html('');
+            row_number--;
+          }
+        });
+
 
   });
 

@@ -115,22 +115,22 @@
 </div>
 <div class="border rounded bg-light">
   <h3 class="ml-2 mt-2">Contatos</h3>
-  <div class="p-4">
-    <div class="row">
+  <div class="p-4" id="contact-div">
+
+  @foreach (old('contato_tipo', $people->contacts->count() ? $people->contacts :
+  ['']) as $people_contact)
+
+  <div class="row contato" id="contact{{ $loop->index }}">
       <div class="col-sm">
         <div class="form-group">
-          <label for="contacts">Tipo</label>
-          <select name="contacts_id[]" class="form-control">
+          <label for="contato_tipo">Tipo</label>
+          <select name="contato_tipo[]" class="form-control">
+
            @foreach($contacts as $id => $nome)
-           @if(old('contacts_id') == '' and isset($people->contact_id))
            <option value="{{ $id }}"
-           {{ ( $people->contact_id == $id ) ? 'selected' : '' }}>
-           {{ $nome }}</option>
-           @else
-           <option value="{{ $id }}"
-           {{ ( old('contacts_id') == $id ) ? 'selected' : '' }}>{{ $nome }}
+           @if (old('contato_tipo.' . $loop->parent->index,
+           optional($people_contact)->id) == $id) selected @endif>{{ $nome }}
            </option>
-           @endif
            @endforeach
           </select>
         </div>
@@ -139,17 +139,22 @@
         <div class="form-group">
           <label for="contato">Contato</label>
           <input type="text" class="form-control"
-                 name="contato" id="contato"
-                 value="{{ $people->passaport ?? old('passaport', ) }}">
+                 name="contato[]"
+                 value="{{ old('contato.' . $loop->index) ??
+                 optional(optional($people_contact)->pivot)->contato }}">
+
         </div>
       </div>
     </div>
+
+    @endforeach
+
     <div class="row">
       <div class="col-md-12">
         <button id="add_row"
-                class="btn btn-default pull-left">+ Add Row</button>
+                class="btn btn-default pull-left">+ Adicione Linha</button>
         <button id='delete_row'
-                class="pull-right btn btn-danger">- Delete Row</button>
+                class="pull-right btn btn-danger">- Excluir Linha</button>
       </div>
     </div>
   </div>

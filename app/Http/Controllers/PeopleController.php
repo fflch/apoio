@@ -70,6 +70,7 @@ class PeopleController extends Controller
      */
     public function edit(People $person)
     {
+        $person->load('contacts');
         return view('people.edit')->with([
             'people' => $person,
             'institutions' => $this->institution(),
