@@ -27,22 +27,22 @@
       e.preventDefault();
       let new_row_number = row_number - 1;
 
-      console.log($('#contact' + row_number).html());
-      /*$('#contact' + row_number).html($('#contact' +
-            new_row_number).html()).find('div.col-sm');*/
+      $('#contact' + row_number).html($('#contact' +
+        new_row_number).html()).find('div.col-sm:first');
 
-      $('#contact-div').append('<div class="row" id="contact' +
-(row_number + 1) + '"></div>');
-          row_number++;
-        });
+      $('#contact-div').append('<div class="row contato" id="contact' +
+        (row_number + 1) + '"></div>');
 
-        $("#delete_row").click(function(e){
-          e.preventDefault();
-          if(row_number > 1){
-            $("#product" + (row_number - 1)).html('');
-            row_number--;
-          }
-        });
+      row_number++;
+    });
+
+    $("#delete_row").click(function(e){
+      e.preventDefault();
+      if(row_number > 1){
+        $("#contact" + (row_number - 1)).html('');
+        row_number--;
+      }
+    });
 
 
   });

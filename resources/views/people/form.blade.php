@@ -115,12 +115,13 @@
 </div>
 <div class="border rounded bg-light">
   <h3 class="ml-2 mt-2">Contatos</h3>
-  <div class="p-4" id="contact-div">
+  <div class="p-4">
+  <div id="contact-div">
 
   @foreach (old('contato_tipo', $people->contacts->count() ? $people->contacts :
   ['']) as $people_contact)
 
-  <div class="row contato" id="contact{{ $loop->index }}">
+    <div class="row contato" id="contact{{ $loop->index }}">
       <div class="col-sm">
         <div class="form-group">
           <label for="contato_tipo">Tipo</label>
@@ -147,7 +148,12 @@
       </div>
     </div>
 
-    @endforeach
+    <div class="row contato" id="contact{{count(
+        old('contato_tipo', $people->contacts->count() ? $people->contacts :
+        [''])) }}">
+    </div>
+  @endforeach
+  </div>
 
     <div class="row">
       <div class="col-md-12">
@@ -157,5 +163,6 @@
                 class="pull-right btn btn-danger">- Excluir Linha</button>
       </div>
     </div>
+
   </div>
 </div>
