@@ -32,6 +32,7 @@ class PeopleController extends Controller
     public function create()
     {
         return view('people.create', [
+            'people' => new People,
             'institutions' => $this->institution(),
             'designations' => $this->designation(),
             'estados' => People::estadoOptions(),
@@ -48,7 +49,7 @@ class PeopleController extends Controller
     public function store(PeopleRequest $request)
     {
         $people = People::create($request->validated());
-        return redirect()->route('people.edit', $people->id);
+        return redirect()->route('people.index', $people->id);
     }
 
     /**
@@ -93,7 +94,19 @@ class PeopleController extends Controller
         if(!$people)
             return redirect()->back();
         $people->update($request->validated());
+
+        $people->contacts()->detach();
+        $contatos_tipos = $request->input('contato_tipo', []);
+        $contatos = $request->input('contato', []);
+        for($contact=0; $contact < count($contatos_tipos); $contact++) {
+            if($contatos_tipos[$contact] != '' and $contatos[$contact] != '') {
+                $people->contacts()->attach($contatos_tipos[$contact],
+                    ['contato' => $contatos[$contact]]);
+            }
+        }
+
         return redirect()->route('people.edit', $people->id);
+
     }
 
     /**
@@ -118,7 +131,7 @@ class PeopleController extends Controller
         $people = new People;
         $peoples = $people->search($request->filter);
 
-        return view('peoples.index', [
+        return view('people.index', [
             'peoples' => $peoples,
             'filters' => $filters,
         ]);

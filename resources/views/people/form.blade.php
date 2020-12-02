@@ -116,51 +116,52 @@
 <div class="border rounded bg-light">
   <h3 class="ml-2 mt-2">Contatos</h3>
   <div class="p-4">
-  <div id="contact-div">
+    <div id="contact-div">
 
-  @foreach (old('contato_tipo', $people->contacts->count() ? $people->contacts :
-  ['']) as $people_contact)
+    @foreach (old('contato_tipo', $people->contacts->count() ? $people->contacts :
+    ['']) as $people_contact)
 
-    <div class="row contato" id="contact{{ $loop->index }}">
-      <div class="col-sm">
-        <div class="form-group">
-          <label for="contato_tipo">Tipo</label>
-          <select name="contato_tipo[]" class="form-control">
+      <div class="row" id="contact{{ $loop->index }}">
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="contato_tipo">Tipo</label>
+            <select name="contato_tipo[]" class="form-control">
 
-           @foreach($contacts as $id => $nome)
-           <option value="{{ $id }}"
-           @if (old('contato_tipo.' . $loop->parent->index,
-           optional($people_contact)->id) == $id) selected @endif>{{ $nome }}
-           </option>
-           @endforeach
-          </select>
+             @foreach($contacts as $id => $nome)
+             <option value="{{ $id }}"
+             @if (old('contato_tipo.' . $loop->parent->index,
+             optional($people_contact)->id) == $id) selected @endif>{{ $nome }}
+             </option>
+             @endforeach
+            </select>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="contato">Contato</label>
+            <input type="text" class="form-control"
+                   name="contato[]"
+                   value="{{ old('contato.' . $loop->index) ??
+                   optional(optional($people_contact)->pivot)->contato }}">
+
+          </div>
         </div>
       </div>
-      <div class="col-sm">
-        <div class="form-group">
-          <label for="contato">Contato</label>
-          <input type="text" class="form-control"
-                 name="contato[]"
-                 value="{{ old('contato.' . $loop->index) ??
-                 optional(optional($people_contact)->pivot)->contato }}">
+    @endforeach
 
-        </div>
+      <div class="row contato" id="contact{{count(
+          old('contato_tipo', $people->contacts->count() ? $people->contacts :
+          [''])) }}">
       </div>
-    </div>
 
-    <div class="row contato" id="contact{{count(
-        old('contato_tipo', $people->contacts->count() ? $people->contacts :
-        [''])) }}">
     </div>
-  @endforeach
-  </div>
 
     <div class="row">
       <div class="col-md-12">
         <button id="add_row"
-                class="btn btn-default pull-left">+ Adicione Linha</button>
+                class="btn btn-primary">+ Adicione Linha</button>
         <button id='delete_row'
-                class="pull-right btn btn-danger">- Excluir Linha</button>
+                class="btn btn-danger">- Excluir Linha</button>
       </div>
     </div>
 

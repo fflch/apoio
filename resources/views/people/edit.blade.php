@@ -9,7 +9,7 @@
       @csrf
       @method('PUT')
       @include('people.form')
-      <button type="submit" class="btn btn-info">Atualizar</button>
+      <button type="submit" class="btn btn-info mt-3">Atualizar</button>
     </form>
   </div>
 </div>
@@ -43,7 +43,6 @@
         row_number--;
       }
     });
-
 
   });
 

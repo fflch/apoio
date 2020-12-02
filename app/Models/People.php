@@ -41,7 +41,7 @@ class People extends Model
     {
         $results = $this->where(function ($query) use($filter) {
             if($filter) {
-                $query->where('people', 'like', "%$filter%");
+                $query->where('nome', 'like', "%$filter%");
             }
         })->paginate();
 
