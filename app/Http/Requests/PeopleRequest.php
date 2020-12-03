@@ -23,8 +23,8 @@ class PeopleRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'nusp' => 'required',
+        $rules = [
+            'nusp' => "required",
             'nome' => 'required',
             'unidade' => '',
             'endereco' => '',
@@ -39,5 +39,11 @@ class PeopleRequest extends FormRequest
             'passaport' => '',
             'observacao' => '',
         ];
+
+        if($this->method() == 'POST') {
+            $rules['nusp'] .= "|unique:people";
+        }
+
+        return $rules;
     }
 }
