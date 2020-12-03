@@ -24,7 +24,7 @@ class PeopleRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'nusp' => "required",
+            'nusp' => "required|integer",
             'nome' => 'required',
             'unidade' => '',
             'endereco' => '',

@@ -28,7 +28,19 @@
       let new_row_number = row_number - 1;
 
       $('#contact' + row_number).html($('#contact' +
-        new_row_number).html()).find('div.col-sm:first');
+        new_row_number).html()).find('*').each(function(){
+          if($(this).is("select option[value='']")){
+            $(this).prop('selected', true);
+          }else if($(this).is('input:text')){
+            $(this).attr('value', '');
+          }
+        });
+    /*
+        find("input").attr('value', '')
+        .find("select option[value='']").prop('selected', true);
+
+      /*$('#contact' + row_number).html($('#contact' +
+        new_row_number).html()).find('div.col-sm:first');*/
 
       $('#contact-div').append('<div class="row contato" id="contact' +
         (row_number + 1) + '"></div>');
