@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\People;
+use App\Models\Designation;
+use App\Models\Institution;
 
 class PeopleRequest extends FormRequest
 {
@@ -26,18 +30,28 @@ class PeopleRequest extends FormRequest
         $rules = [
             'nusp' => "required|integer",
             'nome' => 'required',
-            'unidade' => '',
-            'endereco' => '',
-            'complemento' => '',
-            'cidade' => '',
-            'estado' => '',
-            'cep' => '',
-            'instituicao' => '',
-            'identidade' => '',
-            'pispasep' => '',
-            'cpf' => '',
-            'passaport' => '',
-            'observacao' => '',
+            'designation_id' => [
+                'nullable',
+                Rule::in(Designation::all()->pluck('id')),
+            ],
+            'instituicao' => [
+                'nullable',
+                Rule::in(Institution::all()->pluck('id')),
+            ],
+            'unidade' => 'nullable',
+            'endereco' => 'nullable',
+            'complemento' => 'nullable',
+            'cidade' => 'nullable',
+            'estado' => [
+                'nullable',
+                Rule::in(array_keys(People::estadoOptions()))
+            ],
+            'cep' => 'nullable',
+            'cpf' => 'nullable',
+            'identidade' => 'nullable',
+            'passaport' => 'nullable',
+            'pispasep' => 'nullable',
+            'observacao' => 'nullable',
         ];
 
         if($this->method() == 'POST') {
