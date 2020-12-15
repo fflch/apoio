@@ -25,8 +25,8 @@
       <td>{{ $people->nusp }}</td>
       <td>{{ $people->nome }}</td>
       <td>
-        @foreach($people->contacts as $contact)
-        <span>{{ $contact->nome }}</span>
+        @foreach($people->contacts as $key => $item)
+        <span>{{ $item->nome }} - {{ $item->pivot->contato }}</span><br />
         @endforeach
       </td>
       <td>

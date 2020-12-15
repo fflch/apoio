@@ -35,12 +35,6 @@
             $(this).attr('value', '');
           }
         });
-    /*
-        find("input").attr('value', '')
-        .find("select option[value='']").prop('selected', true);
-
-      /*$('#contact' + row_number).html($('#contact' +
-        new_row_number).html()).find('div.col-sm:first');*/
 
       $('#contact-div').append('<div class="row contato" id="contact' +
         (row_number + 1) + '"></div>');

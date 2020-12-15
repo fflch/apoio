@@ -49,7 +49,7 @@ class PeopleController extends Controller
     public function store(PeopleRequest $request)
     {
         $people = People::create($request->validated());
-        return redirect()->route('people.index', $people->id);
+        return redirect()->route('people.index');
     }
 
     /**
@@ -105,7 +105,7 @@ class PeopleController extends Controller
             }
         }
 
-        return redirect()->route('people.edit', $people->id);
+        return redirect()->route('people.index');
 
     }
 

@@ -126,7 +126,6 @@
           <div class="form-group">
             <label for="contato_tipo">Tipo</label>
             <select name="contato_tipo[]" class="form-control">
-
              @foreach($contacts as $id => $nome)
              <option value="{{ $id }}"
              @if (old('contato_tipo.' . $loop->parent->index,
@@ -159,9 +158,9 @@
     <div class="row">
       <div class="col-md-12">
         <button id="add_row"
-                class="btn btn-primary">+ Adicione Linha</button>
+                class="btn btn-primary float-left">+ Adicionar Linha</button>
         <button id='delete_row'
-                class="btn btn-danger">- Excluir Linha</button>
+                class="float-right btn btn-danger">- Excluir Linha</button>
       </div>
     </div>
 

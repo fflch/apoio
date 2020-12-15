@@ -18,7 +18,7 @@ class ContactSeeder extends Seeder
             'nome' => 'Email',
         ];
         $contact2 = [
-            'nome' => 'Telefone Celular',
+            'nome' => 'Celular',
         ];
         $contact3 = [
             'nome' => 'Telefone Fixo',
@@ -31,6 +31,6 @@ class ContactSeeder extends Seeder
         Contact::create($contact2);
         Contact::create($contact3);
         Contact::create($contact4);
-        Contact::factory()->count(5)->create();
+        //Contact::factory()->count(5)->create();
     }
 }
