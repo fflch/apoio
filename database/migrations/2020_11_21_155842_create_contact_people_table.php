@@ -19,8 +19,10 @@ class CreateContactPeopleTable extends Migration
             $table->unsignedBigInteger('contact_id');
             $table->string('contato');
             $table->timestamps();
-            $table->foreign('people_id')->references('id')->on('people');
-            $table->foreign('contact_id')->references('id')->on('contacts');
+            $table->foreign('people_id')->references('id')
+                  ->on('people')->onDelete('cascade');
+            $table->foreign('contact_id')->references('id')
+                  ->on('contacts')->onDelete('cascade');
         });
     }
 
