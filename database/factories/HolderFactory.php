@@ -2,8 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Holder;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Holder;
+use App\Models\People;
+use App\Models\Designation;
+use App\Models\Departament;
 
 class HolderFactory extends Factory
 {
@@ -21,8 +24,19 @@ class HolderFactory extends Factory
      */
     public function definition()
     {
+        $status = array('S','N');
+        $pertence = array('CTA','CON');
+        $inicio = date("Y-m-d", mktime(0, 0, 0, date("m")-rand(6,12),
+                                   date("d")+rand(1,31), date("Y")));
         return [
-            //
+            'people_id' => People::inRandomOrder()->pluck('id')->first(),
+            'designation_id' => Designation::inRandomOrder()->pluck('id')->first(),
+            'departament_id' => Departament::inRandomOrder()->pluck('id')->first(),
+            'pertence' => $pertence[array_rand($pertence)],
+            'inicio' => $inicio,
+            'termino' => date("Y-m-d", strtotime($inicio. '+ 1 year')),
+            'observacao' => $this->faker->text($maxNbChars = 100),
+            'ativo' => $status[array_rand($status)],
         ];
     }
 }

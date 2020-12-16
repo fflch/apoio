@@ -37,5 +37,6 @@ class HolderSeeder extends Seeder
         ];
         Holder::create($holder1);
         Holder::create($holder2);
+        Holder::factory()->count(30)->create();
     }
 }
