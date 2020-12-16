@@ -24,7 +24,7 @@ class PeopleFactory extends Factory
     public function definition()
     {
         return [
-            'nusp' => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
+            'nusp' => $this->faker->unique()->randomNumber($nbDigits = NULL, $strict = false),
             'nome' => $this->faker->name,
             'institution_id' => Institution::inRandomOrder()->pluck('id')->first(),
             'designation_id' => Designation::inRandomOrder()->pluck('id')->first(),

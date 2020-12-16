@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             AreaSeeder::class,
             PeopleSeeder::class,
             //ContactPeopleSeeder::class,
+            HolderSeeder::class,
+
         ]);
     }
 }
