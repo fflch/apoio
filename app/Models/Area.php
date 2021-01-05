@@ -13,7 +13,7 @@ class Area extends Model
     protected $fillable = ['departament_id', 'nome'];
 
     public function departament(){
-        return $this->belongsTo('App\Departament');
+        return $this->belongsTo('App\Models\Departament');
     }
 
 }

@@ -30,11 +30,14 @@ class People extends Model
         return $this->belongsTo('App\Models\Designation');
     }
 
-    public function contacts()
-    {
+    public function contacts() {
         return $this->belongsToMany('App\Models\Contact')
                         ->withTimestamps()
                         ->withPivot(['contato']);
+    }
+
+    public function holder() {
+        return $this->hasOne('App\Models\Holder');
     }
 
     public function search($filter = null)

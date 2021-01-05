@@ -22,7 +22,11 @@ class Departament extends Model
         return $results;
     }
 
-    public function areas(){
-        return $this->hasMany('App\Area');
+    public function areas() {
+        return $this->hasMany('App\Models\Area');
+    }
+
+    public function holder() {
+        return $this->hasOne('App\Models\Holder');
     }
 }

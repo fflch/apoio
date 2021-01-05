@@ -74,12 +74,13 @@ class InstitutionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InstitutionRequest $request, $id)
     {
         $institution = Institution::find($id);
+
         if(!$institution)
             return redirect()->back();
-        $institution->update($request->all());
+        $institution->update($request->validate());
         return redirect()->route('institutions.index');
     }
 

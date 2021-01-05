@@ -26,4 +26,8 @@ class Designation extends Model
         return $this->hasMany('App\Models\People');
     }
 
+    public function holder() {
+        return $this->hasOne('App\Models\Holder');
+    }
+
 }

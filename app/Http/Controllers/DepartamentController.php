@@ -76,12 +76,10 @@ class DepartamentController extends Controller
      */
     public function update(DepartamentRequest $request, $id)
     {
-        $validated = $request->validated();
-
         $departament = Departament::find($id);
         if(!$departament)
             return redirect()->back();
-        $departament->update($validated);
+        $departament->update(request->$validated());
         return redirect()->route('departaments.index');
     }
 
