@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\HolderRequest;
 use Illuminate\Http\Request;
 use App\Models\Holder;
+use App\Http\Requests\HolderRequest;
 
 class HolderController extends Controller
 {
@@ -17,10 +17,12 @@ class HolderController extends Controller
     {
         $filters = $request->except('_token');
         $pertence = $request->filter ?? 'CTA';
-        $holders = Holder::where('pertence', 'CTA')
+        $holders = Holder::where('pertence', $pertence)
             ->with('people','designation')->paginate();
         return view('holders.index', [
             'holders' => $holders,
+            'filter' => $pertence,
+            'optionsFilters' => Holder::pertenceOptions(),
             'filters' => $filters,
         ]);
     }

@@ -39,8 +39,6 @@ Route::any('/areas/search', [AreaController::class,'search'])
     ->name('areas.search');
 Route::resource('/areas', AreaController::class);
 
-Route::any('/holders/search', [HolderController::class,'search'])
-    ->name('holders.search');
 Route::resource('/holders', HolderController::class);
 
 Route::get('/', function () {

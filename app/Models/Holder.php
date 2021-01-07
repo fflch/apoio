@@ -20,6 +20,13 @@ class Holder extends Model
         'ativo',
     ];
 
+    public static function pertenceOptions() {
+        return [
+            'CTA' => 'CTA',
+            'CON' => 'Congregação',
+        ];
+    }
+
     public function people() {
         return $this->belongsTo('App\Models\People');
     }

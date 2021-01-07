@@ -3,11 +3,21 @@
 @section('content')
 <h3 class="ml-2 mt-2">Titulares</h3>
 <a href="{{ route('holders.create') }}" class="btn btn-info ml-2">Adicionar</a>
-<form method="post" action="{{ route('holders.index') }}" class="form
+<form method="get" action="{{ route('holders.index') }}" class="form
       form-inline float-right">
-  @csrf
-  <input type="text" class="form-control" name="filter" placeholder=""
-    value="{{ $filters['filter'] ?? '' }}">
+    @csrf
+    <select type="select" class="form-control" name="filter" id="filter">
+      @foreach($optionsFilters as $key => $value)
+      @if(old('filter') == '' and isset($filter))
+      <option value="{{ $key }}"
+      {{ ( $filter == $key ) ? 'selected' : '' }}>{{ $value }}</option>
+      @else
+      <option value="{{ $key }}"
+      {{ ( old('filter') == $key ) ? 'selected' : '' }}>{{ $value }}
+      </option>
+      @endif
+      @endforeach
+    </select>
   <button type="submit" class="btn btn-info ml-2"> Buscar </button>
 </form>
 <table class="table table-striped mt-4">
