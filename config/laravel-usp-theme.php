@@ -62,6 +62,10 @@ return [
             'url'  => '/areas',
         ],
         [
+            'text' => 'Titulares',
+            'url'  => '/holders',
+        ],
+        [
             'text'    => 'SubMenu2',
             'submenu' => $submenu2,
             'can'  => 'admin',
