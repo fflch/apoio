@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Holder;
+use App\Models\Departament;
+use App\Models\Designation;
 use App\Http\Requests\HolderRequest;
 
 class HolderController extends Controller
@@ -32,7 +34,17 @@ class HolderController extends Controller
      */
     public function create()
     {
-        return view('holders.create');
+        $departamentos = Departament::all()->sortBy('nome')
+                                           ->pluck('nome', 'id');
+        $designations = Designation::all()->sortBy('nome')->pluck('nome', 'id');
+        $holder = new Holder();
+        return view('holders.create')->with([
+            'holder' => $holder,
+            'departamentos' => $departamentos,
+            'designations' => $designations,
+            'pertenceOptions' => Holder::pertenceOptions(),
+            'statusOptions' => Holder::statusOptions(),
+        ]);
     }
 
     /**
@@ -66,7 +78,16 @@ class HolderController extends Controller
      */
     public function edit(Holder $holder)
     {
-        return view('holders.edit')->with('holder', $holder);
+        $departamentos = Departament::all()->sortBy('nome')
+                                           ->pluck('nome', 'id');
+        $designations = Designation::all()->sortBy('nome')->pluck('nome', 'id');
+        return view('holders.edit')->with([
+            'holder' => $holder,
+            'departamentos' => $departamentos,
+            'designations' => $designations,
+            'pertenceOptions' => Holder::pertenceOptions(),
+            'statusOptions' => Holder::statusOptions(),
+        ]);
     }
 
     /**
@@ -78,12 +99,10 @@ class HolderController extends Controller
      */
     public function update(HolderRequest $request, $id)
     {
-        $validated = $request->validated();
-
         $holder = Holder::find($id);
         if(!$holder)
             return redirect()->back();
-        $holder->update($validated);
+        $holder->update($request->validated());
         return redirect()->route('holders.index');
     }
 

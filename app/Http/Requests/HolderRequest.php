@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use App\Models\Designation;
 use App\Models\Departament;
+use App\Models\Holder;
 
 class HolderRequest extends FormRequest
 {
@@ -38,14 +39,14 @@ class HolderRequest extends FormRequest
             ],
             'pertence' => [
                 'required',
-                Rule::in(['CTA', 'CON']),
+                Rule::in(array_keys(Holder::pertenceOptions())),
             ],
             'inicio' => 'required|date',
             'termino' => 'required|date|after:inicio',
             'observacao' => 'nullable',
-            'ativo' => [
+            'status' => [
                 'required',
-                Rule::in(['S', 'N']),
+                Rule::in(array_keys(Holder::statusOptions())),
             ],
         ];
     }

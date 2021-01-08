@@ -22,7 +22,7 @@ class CreateHoldersTable extends Migration
             $table->date('inicio');
             $table->date('termino');
             $table->string('observacao')->nullable();
-            $table->char('ativo', 1)->default('S');
+            $table->char('status', 1)->default('A');
             $table->timestamps();
         });
     }

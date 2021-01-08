@@ -22,7 +22,7 @@ class HolderSeeder extends Seeder
             'inicio' => '2021-01-01',
             'termino' => '2022-01-01',
             'observacao' => 'Observação teste',
-            'ativo' => 'S',
+            'status' => 'S',
         ];
 
         $holder2 = [
@@ -33,7 +33,7 @@ class HolderSeeder extends Seeder
             'inicio' => '2021-03-01',
             'termino' => '2022-03-01',
             'observacao' => 'Observação teste',
-            'ativo' => 'S',
+            'status' => 'S',
         ];
         Holder::create($holder1);
         Holder::create($holder2);

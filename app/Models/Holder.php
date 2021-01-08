@@ -17,13 +17,20 @@ class Holder extends Model
         'inicio',
         'termino',
         'observacao',
-        'ativo',
+        'status',
     ];
 
     public static function pertenceOptions() {
         return [
             'CTA' => 'CTA',
             'CON' => 'Congregação',
+        ];
+    }
+
+    public static function statusOptions() {
+        return [
+            'A' => 'Ativo',
+            'I' => 'Inativo',
         ];
     }
 
