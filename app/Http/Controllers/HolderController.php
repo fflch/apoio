@@ -15,13 +15,11 @@ class HolderController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->except('_token');
-        $filter = $request->filter ?? 'CTA';
-        $holders = Holder::where('pertence', $filter)
+        $filters = $request->all();
+        $holders = Holder::where('pertence', $filters['filter'] ?? 'CTA')
             ->with('people','designation')->paginate();
         return view('holders.index', [
             'holders' => $holders,
-            'filter' => $filter,
             'optionsFilters' => Holder::pertenceOptions(),
             'filters' => $filters,
         ]);

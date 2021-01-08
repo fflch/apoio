@@ -5,12 +5,11 @@
 <a href="{{ route('holders.create') }}" class="btn btn-info ml-2">Adicionar</a>
 <form method="get" action="{{ route('holders.index') }}" class="form
       form-inline float-right">
-    @csrf
     <select type="select" class="form-control" name="filter" id="filter">
       @foreach($optionsFilters as $key => $value)
-      @if(old('filter') == '' and isset($filter))
+      @if(old('filter') == '' and isset($filters['filter']))
       <option value="{{ $key }}"
-      {{ ( $filter == $key ) ? 'selected' : '' }}>{{ $value }}</option>
+      {{ ( $filters['filter'] == $key ) ? 'selected' : '' }}>{{ $value }}</option>
       @else
       <option value="{{ $key }}"
       {{ ( old('filter') == $key ) ? 'selected' : '' }}>{{ $value }}
