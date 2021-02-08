@@ -12,4 +12,44 @@
     </form>
   </div>
 </div>
+
+@section('javascripts_bottom')
+  <script>
+    // CSRF Token
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      $(document).ready(function(){
+        $("#nome").autocomplete({
+          minLength:3,
+          delay:500,
+          source: function( request, response ) {
+            // Fetch data
+            $.ajax({
+              url:"{{ route('holders.getpeople') }}",
+              type: 'post',
+              dataType: "json",
+              data: {
+                 _token: CSRF_TOKEN,
+                 search: request.term
+              },
+              success: function( data ) {
+                 response( data );
+              }
+            });
+          },
+          select: function (event, ui) {
+            $('#nome').val(ui.item.label);
+            $('#people_id').val(ui.item.value);
+            $('#nusp').html(ui.item.nusp);
+            return false;
+          }
+        })
+        .autocomplete( "instance" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+        .append( "<div>" + item.label + " ( " + item.nusp + " ) </div>" )
+        .appendTo( ul );
+        };
+     });
+  </script>
+@endsection
+
 @endsection

@@ -39,6 +39,8 @@ Route::any('/areas/search', [AreaController::class,'search'])
     ->name('areas.search');
 Route::resource('/areas', AreaController::class);
 
+Route::post('/holders/getPeople',[HolderController::class,'getPeople'])
+    ->name('holders.getpeople');
 Route::resource('/holders', HolderController::class);
 
 Route::get('/', function () {

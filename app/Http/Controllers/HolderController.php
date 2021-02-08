@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Holder;
 use App\Models\Departament;
 use App\Models\Designation;
+use App\Models\People;
 use App\Http\Requests\HolderRequest;
 
 class HolderController extends Controller
@@ -44,6 +45,7 @@ class HolderController extends Controller
             'designations' => $designations,
             'pertenceOptions' => Holder::pertenceOptions(),
             'statusOptions' => Holder::statusOptions(),
+            'readyonly' => false,
         ]);
     }
 
@@ -87,6 +89,7 @@ class HolderController extends Controller
             'designations' => $designations,
             'pertenceOptions' => Holder::pertenceOptions(),
             'statusOptions' => Holder::statusOptions(),
+            'readyonly' => true,
         ]);
     }
 
@@ -119,5 +122,23 @@ class HolderController extends Controller
             return redirect()->back();
         $holder->delete();
         return redirect()->route('holders.index');
+    }
+
+    public function getPeople(Request $request)
+    {
+        if($request->has('search')) {
+            $people = People::orderby('nome','asc')->select('id','nome','nusp')
+                      ->where('nome', 'like', '%' . $request->search . '%')
+                      ->limit(5)->get();
+        }
+        $response = array();
+        foreach($people as $person){
+            $response[] = array(
+                "value" => $person->id,
+                "label" => $person->nome,
+                "nusp"  => $person->nusp
+            );
+        }
+        return response()->json($response);
     }
 }

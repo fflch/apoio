@@ -1,7 +1,11 @@
 <div class="form-group">
   <label for="nome">Nome</label>
   <input type="text" class="form-control" name="nome" id="nome"
-                                                      value="{{ $holder->id }}">
+         value="{{ $holder->people->nome ?? '' }}" @if($readyonly) disabled
+         @endif>
+  <input type="hidden" name="people_id" id="people_id" value="{{ $holder->id }}">
+  <span id="nusp" class="d-none">{{ $holder->nusp }}</span>
+
 </div>
 
 <div class="form-group">
