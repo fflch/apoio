@@ -9,6 +9,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HolderController;
+use App\Http\Controllers\SurrogateController;
 use Illuminate\Support\Facades\Route;
 
 Route::any('/people/search', [PeopleController::class,'search'])
@@ -42,6 +43,10 @@ Route::resource('/areas', AreaController::class);
 Route::post('/holders/getPeople',[HolderController::class,'getPeople'])
     ->name('holders.getpeople');
 Route::resource('/holders', HolderController::class);
+
+Route::post('/surrogates/getPeople',[SurrogateController::class,'getPeople'])
+    ->name('surrogates.getpeople');
+Route::resource('/surrogates', SurrogateController::class);
 
 Route::get('/', function () {
     return view('app');

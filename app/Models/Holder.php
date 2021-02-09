@@ -45,4 +45,8 @@ class Holder extends Model
     public function departament() {
         return $this->belongsTo('App\Models\Departament');
     }
+
+    public function surrogate() {
+        return $this->hasOne('App\Models\Surrogate');
+    }
 }

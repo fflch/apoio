@@ -66,6 +66,10 @@ return [
             'url'  => '/holders',
         ],
         [
+            'text' => 'Suplentes',
+            'url'  => '/surrogates',
+        ],
+        [
             'text'    => 'SubMenu2',
             'submenu' => $submenu2,
             'can'  => 'admin',

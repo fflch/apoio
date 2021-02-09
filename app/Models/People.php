@@ -40,6 +40,10 @@ class People extends Model
         return $this->hasOne('App\Models\Holder');
     }
 
+    public function surrogate() {
+        return $this->hasOne('App\Models\Surrogate');
+    }
+
     public function search($filter = null)
     {
         $results = $this->where(function ($query) use($filter) {
