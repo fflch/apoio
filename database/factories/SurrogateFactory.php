@@ -3,6 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Surrogate;
+use App\Models\Holder;
+use App\Models\People;
+use App\Models\Departament;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SurrogateFactory extends Factory
@@ -25,16 +28,15 @@ class SurrogateFactory extends Factory
         $status_key = array_rand($status);
         $pertence = array('CTA','CON');
         $pertence_key = array_rand($pertence);
-        $inicio = date("Y-m-d", mktime(0, 0, 0, date("m")-rand(6,12),
-                                   date("d")+rand(1,31), date("Y")));
+        $holder_id = Holder::where('pertence', $pertence[$pertence_key])
+                             ->inRandomOrder()->pluck('id')->first();
         return [
             'people_id' => People::inRandomOrder()->pluck('id')->first(),
-            'holder_id' => Holder::where('pertence', $pertence[$pertence_key])
-                                   ->inRandomOrder()->pluck('id')->first(),
+            'holder_id' => $holder_id,
             'departament_id' => Departament::inRandomOrder()->pluck('id')->first(),
             'pertence' => $pertence[$pertence_key],
-            'inicio' => $inicio,
-            'termino' => date("Y-m-d", strtotime($inicio. '+ 1 year')),
+            'inicio' => Holder::where('id', $holder_id)->pluck('inicio')->first(),
+            'termino' => Holder::where('id', $holder_id)->pluck('termino')->first(),
             'observacao' => $this->faker->text($maxNbChars = 100),
             'status' => $status[$status_key]
         ];
