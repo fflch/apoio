@@ -39,7 +39,6 @@
           select: function (event, ui) {
             $('#nome').val(ui.item.label);
             $('#people_id').val(ui.item.value);
-            $('#nusp').html(ui.item.nusp);
             return false;
           }
         })
