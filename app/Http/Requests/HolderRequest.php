@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Designation;
 use App\Models\Departament;
 use App\Models\Holder;
+use App\Models\People;
 
 class HolderRequest extends FormRequest
 {
@@ -28,7 +29,10 @@ class HolderRequest extends FormRequest
     public function rules()
     {
         return [
-            'people_id' => 'required',
+            'people_id' => [
+                'required',
+                Rule::in(People::all()->pluck('id')),
+            ],
             'designation_id' => [
                 'required',
                 Rule::in(Designation::all()->pluck('id')),
