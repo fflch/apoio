@@ -6,7 +6,9 @@ use App\Models\Surrogate;
 use App\Models\Holder;
 use App\Models\People;
 use App\Models\Departament;
+use App\Http\Requests\SurrogateRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SurrogateController extends Controller
 {
@@ -134,4 +136,26 @@ class SurrogateController extends Controller
         }
         return response()->json($response);
     }
+
+    public function getHolder(Request $request)
+    {
+        if($request->has('search')) {
+            $people = DB::table('people as p')->select('p.nome as titular',
+                      'h.id as holder_id', 'd.nome as designation')
+                      ->join('holders as h', 'p.id', '=', 'h.people_id')
+                      ->join('designations as d', 'd.id', '=', 'h.designation_id')
+                      ->where('p.nome', 'like', '%' . $request->search . '%')
+                      ->limit(5)->get();
+        }
+        $response = array();
+        foreach($people as $person){
+            $response[] = array(
+                "value" => $person->holder_id,
+                "label" => $person->titular,
+                "designation"  => $person->designation,
+            );
+        }
+        return response()->json($response);
+    }
+
 }

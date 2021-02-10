@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Models\People;
+use App\Models\Departament;
+use App\Models\Holder;
 
 class SurrogateRequest extends FormRequest
 {
@@ -26,11 +30,13 @@ class SurrogateRequest extends FormRequest
         return [
             'people_id' => [
                 'required',
-                Rule::in(People::all()->pluck('id')),
+                Rule::in(People::where('id', $this->people_id)->pluck('id')
+                                                  ->toArray()),
             ],
             'departament_id' => [
                 'required',
-                Rule::in(Departament::all()->pluck('id')),
+                Rule::in(Departament::where('id', $this->departament_id)
+                                            ->pluck('id')->toArray()),
             ],
             'pertence' => [
                 'required',

@@ -46,6 +46,8 @@ Route::resource('/holders', HolderController::class);
 
 Route::post('/surrogates/getPeople',[SurrogateController::class,'getPeople'])
     ->name('surrogates.getpeople');
+Route::post('/surrogates/getHolder',[SurrogateController::class,'getHolder'])
+    ->name('surrogates.getholder');
 Route::resource('/surrogates', SurrogateController::class);
 
 Route::get('/', function () {

@@ -1,6 +1,24 @@
 <div class="form-row">
   <div class="form-group col-md-8">
-    <label for="nome">Nome</label>
+    <label for="holder">Titular</label>
+    <input type="text" class="form-control" name="holder" id="holder"
+           value="{{ $surrogate->holder->people->nome ?? '' }}">
+    <input type="hidden" name="holder_id" id="holder_id" value="{{
+    $surrogate->holder_id }}">
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <label for="departament">Cargo</label>
+    <input type="text" class="form-control" name="designation" id="designation"
+           value="{{ $surrogate->holder->designation->nome ?? '' }}" disabled>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <label for="nome">Suplente</label>
     <input type="text" class="form-control" name="nome" id="nome"
            value="{{ $surrogate->people->nome ?? '' }}">
     <input type="hidden" name="people_id" id="people_id" value="{{ $surrogate->id }}">
