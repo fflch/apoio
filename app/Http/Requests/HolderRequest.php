@@ -31,15 +31,18 @@ class HolderRequest extends FormRequest
         return [
             'people_id' => [
                 'required',
-                Rule::in(People::all()->pluck('id')),
+                Rule::in(People::where('id', $this->people_id)->pluck('id')
+                                            ->toArray()),
             ],
             'designation_id' => [
                 'required',
-                Rule::in(Designation::all()->pluck('id')),
+                Rule::in(Designation::where('id', $this->designation_id)
+                                            ->pluck('id')->toArray()),
             ],
             'departament_id' => [
                 'required',
-                Rule::in(Departament::all()->pluck('id')),
+                Rule::in(Departament::where('id', $this->departament_id)
+                                            ->pluck('id')->toArray()),
             ],
             'pertence' => [
                 'required',
