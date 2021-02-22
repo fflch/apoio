@@ -16,3 +16,7 @@
   </div>
 </div>
 @endsection
+
+@section('javascripts_bottom')
+  <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
+@endsection

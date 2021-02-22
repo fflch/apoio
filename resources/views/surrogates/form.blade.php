@@ -66,12 +66,12 @@
 <div class="form-row">
   <div class="form-group col-md-2">
     <label for="inicio">Início</label>
-    <input type="date" class="form-control" name="inicio" id="inicio"
+    <input type="text" class="form-control datepicker" name="inicio" id="inicio"
             value="{{ $surrogate->inicio }}">
   </div>
   <div class="form-group col-md-2">
     <label for="inicio">Término</label>
-    <input type="date" class="form-control" name="termino" id="termino"
+    <input type="text" class="form-control datepicker" name="termino" id="termino"
             value="{{ $surrogate->termino }}">
   </div>
 </div>
