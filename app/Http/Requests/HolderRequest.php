@@ -48,8 +48,8 @@ class HolderRequest extends FormRequest
                 'required',
                 Rule::in(array_keys(Holder::pertenceOptions())),
             ],
-            'inicio' => 'required|date',
-            'termino' => 'required|date|after:inicio',
+            'inicio' => 'required|date_format:"d/m/Y"',
+            'termino' => 'required|date_format:"d/m/Y"|after:inicio',
             'observacao' => 'nullable',
             'status' => [
                 'required',
