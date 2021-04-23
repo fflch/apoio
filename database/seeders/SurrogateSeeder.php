@@ -19,8 +19,8 @@ class SurrogateSeeder extends Seeder
             'holder_id' => 1,
             'departament_id' => 1,
             'pertence' => 'CTA',
-            'inicio' => '2021-01-01',
-            'termino' => '2022-01-01',
+            'inicio' => '01/01/2021',
+            'termino' => '01/01/2022',
             'observacao' => 'Observação teste',
             'status' => 'S',
         ];
@@ -30,8 +30,8 @@ class SurrogateSeeder extends Seeder
             'holder_id' => 2,
             'departament_id' => 2,
             'pertence' => 'CTA',
-            'inicio' => '2021-03-01',
-            'termino' => '2022-03-01',
+            'inicio' => '01/03/2021',
+            'termino' => '01/03/2022',
             'observacao' => 'Observação teste',
             'status' => 'S',
         ];

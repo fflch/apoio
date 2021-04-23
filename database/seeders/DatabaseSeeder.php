@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             //ContactPeopleSeeder::class,
             HolderSeeder::class,
             SurrogateSeeder::class,
+            ContestSeeder::class,
         ]);
     }
 }

@@ -29,4 +29,8 @@ class Departament extends Model
     public function holder() {
         return $this->hasOne('App\Models\Holder');
     }
+
+    public function contest() {
+        return $this->hasOne('App\Models\Contest');
+    }
 }
