@@ -10,6 +10,7 @@ use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HolderController;
 use App\Http\Controllers\SurrogateController;
+use App\Http\Controllers\ContestController;
 use Illuminate\Support\Facades\Route;
 
 Route::any('/people/search', [PeopleController::class,'search'])
@@ -49,6 +50,8 @@ Route::post('/surrogates/getPeople',[SurrogateController::class,'getPeople'])
 Route::post('/surrogates/getHolder',[SurrogateController::class,'getHolder'])
     ->name('surrogates.getholder');
 Route::resource('/surrogates', SurrogateController::class);
+
+Route::resource('/contests', ContestController::class);
 
 Route::get('/', function () {
     return view('app');

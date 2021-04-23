@@ -12,9 +12,17 @@ class ContestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filters = $request->all();
+        $contests = Contest::where('status', 'C')->paginate();
+        //$holders = Holder::where('pertence', $filters['filter'] ?? 'CTA')
+        //    ->with('people','designation')->paginate();
+        return view('contests.index', [
+            'contests' => $contests,
+            'optionsFilters' => array('Ativo', 'Certame', 'Finalizado'),
+            //'filters' => $filters,
+        ]);
     }
 
     /**
