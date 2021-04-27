@@ -10,6 +10,44 @@ class Contest extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'departament_id',
+        'titularidade',
+        'descricao',
+        'area',
+        'disciplina',
+        'edital',
+        'inicio',
+        'termino',
+        'inicio_prova',
+        'termino_prova',
+        'data_publicacao',
+        'processo',
+        'livro',
+        'qtde_fflch',
+        'qtde_externo',
+        'status',
+        'observacao',
+    ];
+
+    public static function qtdeOptions() {
+        return [
+            '1' => '1',
+            '2' => '2',
+            '3' => '3',
+            '4' => '4',
+            '5' => '5',
+        ];
+    }
+
+    public static function statusOptions() {
+        return [
+            'C' => 'Certame',
+            'A' => 'Ativo',
+            'F' => 'Finalizado',
+        ];
+    }
+
     public function departament() {
         return $this->belongsTo('App\Models\Departament');
     }

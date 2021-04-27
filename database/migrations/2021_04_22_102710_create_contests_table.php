@@ -29,9 +29,9 @@ class CreateContestsTable extends Migration
             $table->string('processo');
             $table->string('livro')->nullable();
             $table->integer('qtde_fflch');
-            $table->integer('qtde_fora');
+            $table->integer('qtde_externo');
             $table->char('status', 1)->default('A');
-            $table->string('observacao');
+            $table->string('observacao')->nullable();
             $table->timestamps();
         });
     }

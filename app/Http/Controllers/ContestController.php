@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contest;
+use App\Models\Departament;
 use Illuminate\Http\Request;
+use App\Http\Requests\ContestRequest;
 
 class ContestController extends Controller
 {
@@ -15,13 +17,11 @@ class ContestController extends Controller
     public function index(Request $request)
     {
         $filters = $request->all();
-        $contests = Contest::where('status', 'C')->paginate();
-        //$holders = Holder::where('pertence', $filters['filter'] ?? 'CTA')
-        //    ->with('people','designation')->paginate();
+        $contests = Contest::where('status', $filters['filter'] ?? 'C')->paginate();
         return view('contests.index', [
             'contests' => $contests,
-            'optionsFilters' => array('Ativo', 'Certame', 'Finalizado'),
-            //'filters' => $filters,
+            'optionsFilters' => Contest::statusOptions(),
+            'filters' => $filters,
         ]);
     }
 
@@ -32,7 +32,14 @@ class ContestController extends Controller
      */
     public function create()
     {
-        //
+        $departamentos = Departament::all()->sortBy('nome')
+            ->pluck('nome', 'id')->prepend('Selecione...', '');
+        $contest = New Contest;
+        return view('contests.create')->with([
+            'contest' => $contest,
+            'departamentos' => $departamentos,
+            'qtdeOptions' => Contest::qtdeOptions(),
+        ]);
     }
 
     /**
@@ -41,9 +48,10 @@ class ContestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContestRequest $request)
     {
-        //
+        $contest = Contest::create($request->validated());
+        return redirect()->route('contests.index');
     }
 
     /**
@@ -65,6 +73,13 @@ class ContestController extends Controller
      */
     public function edit(Contest $contest)
     {
+        $departamentos = Departament::all()->sortBy('nome')
+                                           ->pluck('nome', 'id');
+        return view('contests.edit')->with([
+            'contest' => $contest,
+            'departamentos' => $departamentos,
+            'qtdeOptions' => Contest::qtdeOptions(),
+        ]);
         //
     }
 

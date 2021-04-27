@@ -46,7 +46,7 @@ class ContestFactory extends Factory
             'livro' => $this->faker->numerify('Livro ##'),
             'status' =>  $status[array_rand($status)],
             'qtde_fflch' => 2,
-            'qtde_fora' => 3,
+            'qtde_externo' => 3,
             'observacao' => $this->faker->text($maxNbChars = 50),
         ];
         if($rand_status <> 'A'){

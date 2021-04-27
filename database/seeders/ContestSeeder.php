@@ -27,7 +27,7 @@ class ContestSeeder extends Seeder
             'processo' => 'Processo 14.5',
             'livro' => 'Livro 1',
             'qtde_fflch' => 2,
-            'qtde_fora' => 3,
+            'qtde_externo' => 3,
             'observacao' => 'Sem observação',
         ];
 
@@ -47,7 +47,7 @@ class ContestSeeder extends Seeder
             'livro' => 'Livro 4',
             'status' => 'C',
             'qtde_fflch' => 2,
-            'qtde_fora' => 3,
+            'qtde_externo' => 3,
             'observacao' => 'Sem observação',
         ];
 

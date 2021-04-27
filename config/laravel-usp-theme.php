@@ -38,27 +38,27 @@ return [
             'url'  => '/people',
         ],
         [
-            'text' => 'Instituição',
+            'text' => 'Instituições',
             'url'  => '/institutions',
         ],
         [
-            'text' => 'Departamento',
+            'text' => 'Departamentos',
             'url'  => '/departaments',
         ],
         [
-            'text' => 'Título',
+            'text' => 'Títulos',
             'url'  => '/designations',
         ],
         [
-            'text' => 'Cargo',
+            'text' => 'Cargos',
             'url'  => '/roles',
         ],
         [
-            'text' => 'Contato',
+            'text' => 'Contatos',
             'url'  => '/contact',
         ],
         [
-            'text' => 'Área',
+            'text' => 'Áreas',
             'url'  => '/areas',
         ],
         [
@@ -68,6 +68,10 @@ return [
         [
             'text' => 'Suplentes',
             'url'  => '/surrogates',
+        ],
+        [
+            'text' => 'Concursos',
+            'url'  => '/contests',
         ],
         [
             'text'    => 'SubMenu2',
