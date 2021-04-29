@@ -13,7 +13,7 @@
 <div class="form-row">
   <div class="form-group col-md-8">
     <label for="departament_id">Departamento</label>
-    <select class="form-control" name="departament_id">
+    <select class="form-control" name="departament_id" id="departament_id">
       @foreach($departamentos as $id => $nome)
       @if(old('departament_id') == '' and isset($contest->departament_id))
       <option value="{{ $id }}"
@@ -43,6 +43,26 @@
            value="{{ $contest->descricao ?? old('descricao') }}">
   </div>
 </div>
+
+<div class="form-row">
+  <div class="form-group col-md-8">
+    <label for="area">Área</label>
+    <select class="form-control" name="area" id="area">
+      @foreach($areas as $id => $nome)
+      @if(old('area') == '' and isset($contest->area))
+      <option value="{{ $nome }}"
+      {{ ( $contest->area == $nome ) ? 'selected' : '' }}>
+      {{ $nome }}</option>
+      @else
+      <option value="{{ $nome }}"
+      {{ ( old('nome') == $nome ) ? 'selected' : '' }}>{{ $nome }}
+      </option>
+      @endif
+      @endforeach
+    </select>
+  </div>
+</div>
+
 <div class="form-row">
   <div class="form-group col-md-8">
     <label for="disciplina">Disciplina</label>

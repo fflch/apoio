@@ -43,7 +43,7 @@ class Contest extends Model
     public static function statusOptions() {
         return [
             'C' => 'Certame',
-            'A' => 'Ativo',
+            'A' => 'Aberto',
             'F' => 'Finalizado',
         ];
     }

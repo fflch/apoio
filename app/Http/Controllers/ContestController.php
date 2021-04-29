@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contest;
 use App\Models\Departament;
+use App\Models\Area;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContestRequest;
 
@@ -38,6 +39,7 @@ class ContestController extends Controller
         return view('contests.create')->with([
             'contest' => $contest,
             'departamentos' => $departamentos,
+            'areas' => array(),
             'qtdeOptions' => Contest::qtdeOptions(),
         ]);
     }
@@ -75,24 +77,32 @@ class ContestController extends Controller
     {
         $departamentos = Departament::all()->sortBy('nome')
                                            ->pluck('nome', 'id');
+        #$areas = Area::all()->sortBy('nome')->pluck('nome', 'id');
+        $areas = Area::where('departament_id', $contest->departament_id)
+                       ->orderby('nome','asc')->pluck('nome','id')
+                       ->prepend('Selecione a Área', '');
         return view('contests.edit')->with([
             'contest' => $contest,
             'departamentos' => $departamentos,
+            'areas' => $areas,
             'qtdeOptions' => Contest::qtdeOptions(),
         ]);
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ContestRequest  $request
      * @param  \App\Models\Contest  $contest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contest $contest)
+    public function update(ContestRequest $request, $id)
     {
-        //
+        $contest = Contest::find($id);
+        if(!$contest)
+            return redirect()->back();
+        $contest->update($request->validated());
+        return redirect()->route('contests.index');
     }
 
     /**
@@ -101,8 +111,28 @@ class ContestController extends Controller
      * @param  \App\Models\Contest  $contest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contest $contest)
+    //public function destroy(Contest $contest)
+    public function destroy($id)
     {
-        //
+        $contest = Contest::find($id);
+        if(!$contest)
+            return redirect()->back();
+        $contest->delete();
+        return redirect()->route('contests.index');
+    }
+
+    public function getarea(Request $request)
+    {
+        if($request->has('search')) {
+            $areas = Area::where('departament_id', $request->search)
+                      ->orderby('nome','asc')->get();
+        }
+        $response = array();
+        foreach($areas as $area){
+            $response[] = array(
+                "nome" => $area->nome,
+            );
+        }
+        return response()->json($response);
     }
 }

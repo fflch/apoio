@@ -52,6 +52,8 @@ Route::post('/surrogates/getHolder',[SurrogateController::class,'getHolder'])
 Route::resource('/surrogates', SurrogateController::class);
 
 Route::resource('/contests', ContestController::class);
+Route::post('/contests/getArea',[ContestController::class,'getArea'])
+    ->name('contests.getarea');
 
 Route::get('/', function () {
     return view('app');
