@@ -1,5 +1,11 @@
 @extends('laravel-usp-theme::master')
 
+@section('title') Sistema de Apoio Acadêmico @endsection
+
+@section('styles')
+  <link rel='stylesheet' href="{{ asset('assets/css/app.css') }}">
+@endsection
+
 @section('content')
     @if ($errors->any())
     <div class="alert alert-danger">
