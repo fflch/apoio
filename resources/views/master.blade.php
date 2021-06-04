@@ -1,6 +1,6 @@
 @extends('laravel-usp-theme::master')
 
-@section('title') Sistema de Apoio Acadêmico @endsection
+@section('title') Apoio Acadêmico @endsection
 
 @section('styles')
   <link rel='stylesheet' href="{{ asset('assets/css/app.css') }}">
