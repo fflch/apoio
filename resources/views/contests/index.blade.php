@@ -23,14 +23,17 @@
   <thead>
     <tr>
       <th scope="col">Edital</th>
-      <th scope="col" width="190">Ações</th>
+      <th scope="col" width="300">Ações</th>
     </tr>
   </thead>
   <tbody>
     @foreach($contests as $contest)
     <tr>
-      <td>{{ $contest->edital }}</td>
+      <td><a href="{{ route('contests.edit', $contest->id) }}">
+          {{ $contest->edital }}</a></td>
       <td>
+           <a href="{{ route('contests.show', $contest->id) }}"
+             class="btn btn-success">Comissão</a>
            <a href="{{ route('contests.edit', $contest->id) }}"
              class="btn btn-success">Editar</a>
            <form method="post" action="{{ route('contests.destroy',

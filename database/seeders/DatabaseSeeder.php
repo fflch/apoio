@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             HolderSeeder::class,
             SurrogateSeeder::class,
             ContestSeeder::class,
+            CommissionSeeder::class,
         ]);
     }
 }

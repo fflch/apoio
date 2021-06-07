@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Commission;
 
 class CommissionSeeder extends Seeder
 {
@@ -13,13 +14,70 @@ class CommissionSeeder extends Seeder
      */
     public function run()
     {
-#        $commissions = [
-#            [
-#                'contests_id' => ;
-#                'people_id' => ;
-#                'origem' => ;
-#                'titulo' => ;
-#            ]
-#        ];
+        $titulo = array('TITULAR','ASSOCIADO','DOUTOR');
+        $commissions = [
+            [
+                'contests_id' => 1,
+                'people_id' => 1,
+                'origem' => 'FFLCH',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 2,
+                'origem' => 'FFLCH',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 3,
+                'origem' => 'FFLCH',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 4,
+                'origem' => 'FFLCH',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 5,
+                'origem' => 'FFLCH',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 6,
+                'origem' => 'EXTERNO',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 7,
+                'origem' => 'EXTERNO',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 8,
+                'origem' => 'EXTERNO',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 9,
+                'origem' => 'EXTERNO',
+                'titulo' => $titulo[array_rand($titulo)],
+            ],
+            [
+                'contests_id' => 1,
+                'people_id' => 10,
+                'origem' => 'EXTERNO',
+                'titulo' => $titulo[array_rand($titulo)],
+            ]
+        ];
+
+        Commission::insert($commissions);
     }
 }

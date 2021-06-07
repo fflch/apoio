@@ -75,7 +75,7 @@ $menu = [
     ]
 ];
 
-$right_menu = '';
+$right_menu = [];
 
 return [
     'title' => config('app.name'),
