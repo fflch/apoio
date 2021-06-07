@@ -14,16 +14,51 @@ class DesignationSeeder extends Seeder
      */
     public function run()
     {
-        $designation1 = [
-            'nome'   => 'Assistente',
+        $designations = [
+            [
+                'nome' => 'Assistente',
+            ],
+            [
+                'nome' => 'Associado',
+            ],
+            [
+                'nome' => 'Associado Aposentado',
+            ],
+            [
+                'nome' => 'Associado com Agregação',
+            ],
+            [
+                'nome' => 'Catedrático',
+            ],
+            [
+                'nome' => 'Doutor',
+            ],
+            [
+                'nome' => 'Doutor Aposentado',
+            ],
+            [
+                'nome' => 'Emérito',
+            ],
+            [
+                'nome' => 'Especialista Reconhecido Saber',
+            ],
+            [
+                'nome' => 'Funcionário',
+            ],
+            [
+                'nome' => 'Representante Discente',
+            ],
+            [
+                'nome' => 'Técnico e Administrativo',
+            ],
+            [
+                'nome' => 'Titular',
+            ],
+            [
+                'nome' => 'Titular Aposentado',
+            ]
         ];
 
-        $designation2 = [
-            'nome'   => 'Doutor',
-        ];
-
-        Designation::create($designation1);
-        Designation::create($designation2);
-        Designation::factory()->count(20)->create();
+        Designation::insert($designations);
     }
 }

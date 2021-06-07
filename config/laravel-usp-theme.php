@@ -75,6 +75,8 @@ $menu = [
     ]
 ];
 
+$right_menu = '';
+
 return [
     'title' => config('app.name'),
     'skin' => env('USP_THEME_SKIN', 'uspdev'),
