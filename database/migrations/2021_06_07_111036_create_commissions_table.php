@@ -15,7 +15,7 @@ class CreateCommissionsTable extends Migration
     {
         Schema::create('commissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('contests_id')->constrained();
+            $table->foreignId('contest_id')->constrained();
             $table->foreignId('people_id')->constrained();
             $table->string('origem');
             $table->string('titulo');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contest;
 use App\Models\Departament;
 use App\Models\Area;
+use App\Models\Commission;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContestRequest;
 
@@ -64,7 +65,7 @@ class ContestController extends Controller
      */
     public function show(Contest $contest)
     {
-        //
+            dd($contest);
     }
 
     /**

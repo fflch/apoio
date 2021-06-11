@@ -17,4 +17,12 @@ class Commission extends Model
         'voto',
         'posicao',
     ];
+
+    public function contest() {
+        return $this->belongsTo('App\Models\Contest');
+    }
+
+    public function people() {
+        return $this->hasOne('App\Models\People');
+    }
 }

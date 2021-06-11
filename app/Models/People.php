@@ -44,6 +44,10 @@ class People extends Model
         return $this->hasOne('App\Models\Surrogate');
     }
 
+    public function commission() {
+        return $this->belongsTo('App\Models\Commission');
+    }
+
     public function search($filter = null)
     {
         $results = $this->where(function ($query) use($filter) {

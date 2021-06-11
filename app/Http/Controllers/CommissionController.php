@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Commission;
 use Illuminate\Http\Request;
+use App\Models\Contest;
+
 
 class CommissionController extends Controller
 {
@@ -12,9 +14,9 @@ class CommissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Contest $contest)
     {
-        //
+        dd('aqui id=' . $contest);
     }
 
     /**

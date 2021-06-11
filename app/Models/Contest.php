@@ -112,4 +112,8 @@ class Contest extends Model
         return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
 
+    public function commissions() {
+        return $this->hasMany('App\Models\Commission');
+    }
+
 }
