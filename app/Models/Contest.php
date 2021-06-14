@@ -30,7 +30,8 @@ class Contest extends Model
         'observacao',
     ];
 
-    public static function qtdeOptions() {
+    public static function qtdeOptions()
+    {
         return [
             '1' => '1',
             '2' => '2',
@@ -40,7 +41,8 @@ class Contest extends Model
         ];
     }
 
-    public static function statusOptions() {
+    public static function statusOptions()
+    {
         return [
             'C' => 'Certame',
             'A' => 'Aberto',
@@ -48,72 +50,87 @@ class Contest extends Model
         ];
     }
 
-    public function departament() {
+    public function departament()
+    {
         return $this->belongsTo('App\Models\Departament');
     }
 
-    public function setInicioAttribute($value) {
+    public function setInicioAttribute($value)
+    {
         $this->attributes['inicio'] = Carbon::createFromFormat('d/m/Y', $value)
              ->format('Y-m-d');
     }
 
-    public function getInicioAttribute($value) {
+    public function getInicioAttribute($value)
+    {
         if(empty($value)) {
             return $this->attributes['inicio'] = null;
         }
         return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
 
-    public function setTerminoAttribute($value) {
+    public function setTerminoAttribute($value)
+    {
         $this->attributes['termino'] = Carbon::createFromFormat('d/m/Y', $value)
              ->format('Y-m-d');
     }
 
-    public function getTerminoAttribute($value) {
+    public function getTerminoAttribute($value)
+    {
         if(empty($value)) {
             return $this->attributes['termino'] = null;
         }
         return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
 
-    public function setInicioProvaAttribute($value) {
+    public function setInicioProvaAttribute($value)
+    {
         $this->attributes['inicio_prova'] = Carbon::createFromFormat('d/m/Y', $value)
              ->format('Y-m-d');
     }
 
-    public function getInicioProvaAttribute($value) {
+    public function getInicioProvaAttribute($value)
+    {
         if(empty($value)) {
             return $this->attributes['inicio_prova'] = null;
         }
         return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
 
-    public function setTerminoProvaAttribute($value) {
+    public function setTerminoProvaAttribute($value)
+    {
         $this->attributes['termino_prova'] = Carbon::createFromFormat('d/m/Y', $value)
              ->format('Y-m-d');
     }
 
-    public function getTerminoProvaAttribute($value) {
+    public function getTerminoProvaAttribute($value)
+    {
         if(empty($value)) {
             return $this->attributes['termino_prova'] = null;
         }
         return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
 
-    public function setDataPublicacaoAttribute($value) {
+    public function setDataPublicacaoAttribute($value)
+    {
         $this->attributes['data_publicacao'] = Carbon::createFromFormat('d/m/Y', $value)
              ->format('Y-m-d');
     }
 
-    public function getDataPublicacaoAttribute($value) {
+    public function getDataPublicacaoAttribute($value)
+    {
         if(empty($value)) {
             return $this->attributes['data_publicacao'] = null;
         }
         return Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
     }
 
-    public function commissions() {
-        return $this->hasMany('App\Models\Commission');
+    public function people()
+    {
+        return $this->belongsToMany('App\Models\People')
+                        ->withTimestamps()
+                        ->withPivot(['origem', 'titulo', 'voto', 'posicao'])
+                        ->as('commissions');
     }
 
 }

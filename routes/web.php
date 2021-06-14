@@ -11,7 +11,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HolderController;
 use App\Http\Controllers\SurrogateController;
 use App\Http\Controllers\ContestController;
-use App\Http\Controllers\CommissionController;
 use Illuminate\Support\Facades\Route;
 
 Route::any('/people/search', [PeopleController::class,'search'])
@@ -55,8 +54,6 @@ Route::resource('/surrogates', SurrogateController::class);
 Route::resource('/contests', ContestController::class);
 Route::post('/contests/getArea',[ContestController::class,'getArea'])
     ->name('contests.getarea');
-
-Route::resource('/commission', CommissionController::class);
 
 Route::get('/', function () {
     return view('app');

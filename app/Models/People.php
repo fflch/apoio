@@ -26,26 +26,31 @@ class People extends Model
         'observacao',
     ];
 
-    public function designations() {
+    public function designations()
+    {
         return $this->belongsTo('App\Models\Designation');
     }
 
-    public function contacts() {
+    public function contacts()
+    {
         return $this->belongsToMany('App\Models\Contact')
                         ->withTimestamps()
                         ->withPivot(['contato']);
     }
 
-    public function holder() {
+    public function holder()
+    {
         return $this->hasOne('App\Models\Holder');
     }
 
-    public function surrogate() {
+    public function surrogate()
+    {
         return $this->hasOne('App\Models\Surrogate');
     }
 
-    public function commission() {
-        return $this->belongsTo('App\Models\Commission');
+    public function contest()
+    {
+        return $this->belongsToMany('App\Models\Contest');
     }
 
     public function search($filter = null)

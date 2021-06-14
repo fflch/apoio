@@ -53,6 +53,19 @@ class ContestSeeder extends Seeder
 
         Contest::create($contest1);
         Contest::create($contest2);
-        Contest::factory()->count(30)->create();
+        Contest::factory()->count(18)->create();
+
+        $titulo = array('TITULAR','ASSOCIADO','DOUTOR');
+        $origem = array('FFLCH','EXTERNO');
+        foreach(Contest::all()->take(10) as $contest) {
+            $people = \App\Models\People::inRandomOrder()
+                ->take(10)->pluck('id');
+            foreach($people as $person) {
+                $contest->people()->attach($person, [
+                    'origem' => $origem[array_rand($origem)],
+                    'titulo' => $titulo[array_rand($titulo)],
+                ]);
+            }
+        }
     }
 }
