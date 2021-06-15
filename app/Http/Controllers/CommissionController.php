@@ -13,7 +13,7 @@ class CommissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Contest $contest)
+    public function index()
     {
 
     }
@@ -23,9 +23,16 @@ class CommissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Contest $contest)
     {
-        //
+        $contest->load('people');
+        return view('commissions.create', [
+            'contest' => $contest,
+        ]);
+#        foreach ($contest->people as $person) {
+#            echo $person->commissions->origem . "<br />";
+#        }
+        #dd($commission->pivot->origem);
     }
 
     /**
@@ -47,7 +54,6 @@ class CommissionController extends Controller
      */
     public function show(Commission $commission)
     {
-        //
     }
 
     /**
@@ -81,6 +87,8 @@ class CommissionController extends Controller
      */
     public function destroy(Commission $commission)
     {
+        dd('oi');
+        dd($commission);
         //
     }
 }
