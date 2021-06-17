@@ -60,6 +60,8 @@ Route::get('/commissions/{contest}', [CommissionController::class, 'create'])
     ->name('commissions.create');
 Route::post('/commissions', [CommissionController::class, 'store'])
     ->name('commissions.store');
+Route::delete('/contest/{contest}/people/{people}',
+    [CommissionController::class, 'destroy'])->name('commissions.destroy');
 
 Route::get('/', function () {
     return view('app');

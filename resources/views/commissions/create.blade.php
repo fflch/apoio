@@ -25,11 +25,11 @@
       @foreach($contest->people as $person)
       <tr>
         <td>{{ $person->nome }}</td>
-        <td>{{ $person->titulo }}</td>
-        <td>{{ $person->origem }}</td>
+        <td>{{ $person->commissions->titulo }}</td>
+        <td>{{ $person->commissions->origem }}</td>
         <td>
-             <form method="post" action="{{ route('commissions.destroy',
-              $contest->id) }}" class="form d-inline-block">
+           <form method="post" action="{{ route('commissions.destroy',
+             [$contest->id, $person->commissions->people_id]) }}" class="form d-inline-block">
               @csrf
               @method('DELETE')
              <button type="submit" class="btn btn-danger ml-2"

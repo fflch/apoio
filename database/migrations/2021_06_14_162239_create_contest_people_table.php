@@ -22,6 +22,7 @@ class CreateContestPeopleTable extends Migration
             $table->integer('voto')->default(0);
             $table->integer('posicao')->nullable();
             $table->timestamps();
+            //$table->primary(['contest_id', 'people_id']);
         });
     }
 

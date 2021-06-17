@@ -130,6 +130,8 @@ class Contest extends Model
         return $this->belongsToMany('App\Models\People')
                         ->withTimestamps()
                         ->withPivot(['origem', 'titulo', 'voto', 'posicao'])
+                        ->orderBy('origem', 'desc')
+                        ->orderBy('posicao', 'asc')
                         ->as('commissions');
     }
 

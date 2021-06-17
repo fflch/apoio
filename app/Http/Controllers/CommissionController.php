@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contest;
+use App\Models\People;
 
 
 class CommissionController extends Controller
@@ -25,14 +26,13 @@ class CommissionController extends Controller
      */
     public function create(Contest $contest)
     {
+
         $contest->load('people');
+
         return view('commissions.create', [
             'contest' => $contest,
         ]);
-#        foreach ($contest->people as $person) {
-#            echo $person->commissions->origem . "<br />";
-#        }
-        #dd($commission->pivot->origem);
+
     }
 
     /**
@@ -82,13 +82,14 @@ class CommissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Commission  $commission
+     * @param  \App\Models\Contest  $contest
+     * @param  \App\Models\People   $people
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Commission $commission)
+    public function destroy(Contest $contest, People $people)
     {
-        dd('oi');
-        dd($commission);
-        //
+        $contest->people()->detach($people->id);
+        return redirect()->back();
     }
+
 }

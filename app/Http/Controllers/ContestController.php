@@ -20,6 +20,7 @@ class ContestController extends Controller
     {
         $filters = $request->all();
         $contests = Contest::where('status', $filters['filter'] ?? 'C')->paginate();
+
         return view('contests.index', [
             'contests' => $contests,
             'optionsFilters' => Contest::statusOptions(),
