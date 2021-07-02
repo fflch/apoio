@@ -124,21 +124,4 @@ class HolderController extends Controller
         return redirect()->route('holders.index');
     }
 
-    public function getPeople(Request $request)
-    {
-        if($request->has('search')) {
-            $people = People::orderby('nome','asc')->select('id','nome','nusp')
-                      ->where('nome', 'like', '%' . $request->search . '%')
-                      ->limit(5)->get();
-        }
-        $response = array();
-        foreach($people as $person){
-            $response[] = array(
-                "value" => $person->id,
-                "label" => $person->nome,
-                "nusp"  => $person->nusp
-            );
-        }
-        return response()->json($response);
-    }
 }

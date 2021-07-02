@@ -32,7 +32,7 @@
       <td><a href="{{ route('contests.edit', $contest->id) }}">
           {{ $contest->edital }}</a></td>
       <td>
-           <a href="{{ route('commissions.create', $contest->id) }}"
+           <a href="{{ route('commissions.index', $contest->id) }}"
              class="btn btn-success">Comissão</a>
            <a href="{{ route('contests.edit', $contest->id) }}"
              class="btn btn-success">Editar</a>

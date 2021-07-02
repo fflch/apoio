@@ -26,8 +26,8 @@
           source: function( request, response ) {
             // Fetch data
             $.ajax({
-              url:"{{ route('surrogates.getpeople') }}",
-              type: 'post',
+              url:"{{ route('search.searchpeople') }}",
+              type: 'get',
               dataType: "json",
               data: {
                  _token: CSRF_TOKEN,
@@ -56,8 +56,8 @@
           source: function( request, response ) {
             // Fetch data
             $.ajax({
-              url:"{{ route('surrogates.getholder') }}",
-              type: 'post',
+              url:"{{ route('search.searchholder') }}",
+              type: 'get',
               dataType: "json",
               data: {
                  _token: CSRF_TOKEN,

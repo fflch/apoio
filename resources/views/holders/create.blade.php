@@ -25,8 +25,8 @@
           source: function( request, response ) {
             // Fetch data
             $.ajax({
-              url:"{{ route('holders.getpeople') }}",
-              type: 'post',
+              url:"{{ route('search.searchpeople') }}",
+              type: 'get',
               dataType: "json",
               data: {
                  _token: CSRF_TOKEN,

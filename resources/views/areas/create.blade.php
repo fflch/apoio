@@ -8,7 +8,7 @@
     <form method="POST" action="{{ route('areas.store') }}">
       @csrf
       @include('areas.form')
-      <button type="submit" class="btn btn-info">Salvar</button>
+      <button type="submit" class="btn btn-info ml-2">Salvar</button>
     </form>
   </div>
 </div>

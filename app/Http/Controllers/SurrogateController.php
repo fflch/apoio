@@ -119,43 +119,4 @@ class SurrogateController extends Controller
         return redirect()->route('surrogates.index');
     }
 
-    public function getPeople(Request $request)
-    {
-        if($request->has('search')) {
-            $people = People::orderby('nome','asc')->select('id','nome','nusp')
-                      ->where('nome', 'like', '%' . $request->search . '%')
-                      ->limit(5)->get();
-        }
-        $response = array();
-        foreach($people as $person){
-            $response[] = array(
-                "value" => $person->id,
-                "label" => $person->nome,
-                "nusp"  => $person->nusp
-            );
-        }
-        return response()->json($response);
-    }
-
-    public function getHolder(Request $request)
-    {
-        if($request->has('search')) {
-            $people = DB::table('people as p')->select('p.nome as titular',
-                      'h.id as holder_id', 'd.nome as designation')
-                      ->join('holders as h', 'p.id', '=', 'h.people_id')
-                      ->join('designations as d', 'd.id', '=', 'h.designation_id')
-                      ->where('p.nome', 'like', '%' . $request->search . '%')
-                      ->limit(5)->get();
-        }
-        $response = array();
-        foreach($people as $person){
-            $response[] = array(
-                "value" => $person->holder_id,
-                "label" => $person->titular,
-                "designation"  => $person->designation,
-            );
-        }
-        return response()->json($response);
-    }
-
 }

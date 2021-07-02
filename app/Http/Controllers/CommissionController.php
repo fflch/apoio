@@ -14,8 +14,13 @@ class CommissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Contest $contest)
     {
+        $contest->load('people');
+
+        return view('commissions.index', [
+            'contest' => $contest,
+        ]);
 
     }
 

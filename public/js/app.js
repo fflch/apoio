@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-  console.log('hello');
   $(".datepicker").datepicker({
     showOn: 'button',
     buttonImage: 'images/calendar.png',
