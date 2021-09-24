@@ -14,15 +14,18 @@
 
     <form method="post" action="{{ route('commissions.store') }}">
       @csrf
+      <input type="hidden" name="contest_id" id="contest_id" value="{{
+      $contest->id }}">
       <div class="form-row">
         <div class="form-group col-md-7">
           <input type="text" class="form-control" name="nome"
-          placeholder="Digite o nome da pessoa para buscar">
+          id="nome" placeholder="Digite o nome da pessoa para buscar">
+          <input type="hidden" name="people_id" id="people_id" value="">
         </div>
         <div class="form-group col-md-1">
           <select type="select" class="form-control" name="origem">
             <option value="FFLCH">FFLCH</option>
-            <option value="Externo">Externo</option>
+            <option value="EXTERNO">Externo</option>
           </select>
         </div>
         <div class="form-group col-md-2">
@@ -41,36 +44,88 @@
         <th scope="col" width="90">Ações</th>
       </tr>
     </thead>
-    <tbody>
+    @foreach($origens as $origem)
+    <tbody id={{ $origem }} class="sortable">
+        <tr class="not-sortable">
+          <td colspan="4" style="background-color:#ddd;">{{ $origem }}</td>
+        </tr>
       @foreach($contest->people as $person)
-      <tr>
-        <td>{{ $person->nome }}</td>
-        <td>{{ $person->commissions->titulo }}</td>
-        <td>{{ $person->commissions->origem }}</td>
-        <td>
-           <form method="post" action="{{ route('commissions.destroy',
-             [$contest->id, $person->commissions->people_id]) }}" class="form d-inline-block">
-              @csrf
-              @method('DELETE')
-             <button type="submit" class="btn btn-danger ml-2"
-              onclick="return confirm('Você tem certeza que deseja excluir?')">
-              Excluir</button>
-           </form>
-        </td>
-      </tr>
+        @if($origem == $person->commissions->origem)
+          <tr data-id="{{ $person->id }}">
+            <td>{{ $person->nome }}-{{ $person->id }}</td>
+            <td>{{ $person->commissions->titulo }}</td>
+            <td>{{ $person->commissions->origem }}</td>
+            <td>
+               <form method="post" action="{{ route('commissions.destroy',
+                 [$contest->id, $person->commissions->people_id]) }}"
+                 class="form d-inline-block">
+                  @csrf
+                  @method('DELETE')
+                 <button type="submit" class="btn btn-danger ml-2"
+                  onclick="return confirm('Você tem certeza que deseja excluir?')">
+                  Excluir</button>
+               </form>
+            </td>
+          </tr>
+        @endif
       @endforeach
-    </tbody>
+      </tbody>
+    @endforeach
   </table>
-
-    <form method="POST" action="{{ route('commissions.store') }}">
-      @csrf
-      @include('commissions.form')
-      <button type="submit" class="btn btn-info">Salvar</button>
-    </form>
   </div>
 </div>
 @endsection
 @section('javascripts_bottom')
   <script type="text/javascript">
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      $(document).ready(function(){
+        $("#nome").autocomplete({
+          minLength:3,
+          delay:500,
+          source: function( request, response ) {
+            // Fetch data
+            $.ajax({
+              url:"{{ route('search.searchpeople') }}",
+              type: 'get',
+              dataType: "json",
+              data: {
+                 _token: CSRF_TOKEN,
+                 search: request.term
+              },
+              success: function( data ) {
+                 response( data );
+              }
+            });
+          },
+          select: function (event, ui) {
+            $('#nome').val(ui.item.label);
+            $('#people_id').val(ui.item.value);
+            return false;
+          }
+        })
+        .autocomplete( "instance" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+        .append( "<div>" + item.label + " ( " + item.nusp + " ) </div>" )
+        .appendTo( ul );
+        };
+
+        var $fflch = $("#FFLCH");
+        var $externo = $("#EXTERNO");
+
+        $(".sortable").sortable({
+          items: "tr:not(.not-sortable)",
+          stop: (event, ui) => {
+            var items_fflch = $fflch.sortable('toArray', {attribute: 'data-id'});
+            var items_externo = $externo.sortable('toArray', {attribute: 'data-id'});
+            var ids_fflch = $.grep(items_fflch, (item) => item !== "");
+            var ids_externo = $.grep(items_externo, (item) => item !== "");
+            var ids = $.merge(items_fflch,items_externo);
+            console.log(ids);
+          }
+        });
+        $("#fflch, #externo, .sortable").disableSelection();
+
+     });
+
   </script>
 @endsection

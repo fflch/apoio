@@ -20,6 +20,7 @@ class CommissionController extends Controller
 
         return view('commissions.index', [
             'contest' => $contest,
+            'origens'  => collect(['FFLCH','EXTERNO']),
         ]);
 
     }
@@ -48,7 +49,18 @@ class CommissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contest = Contest::find($request->contest_id);
+        $person = People::find($request->people_id);
+        if(!$contest || !$person)
+            return redirect()->back();
+        $contest->people()->attach($person, [
+            'origem' => $request->origem,
+            'titulo' => $person->designation->nome,
+        ]);
+
+        return view('commissions.index', [
+            'contest' => $contest,
+        ]);
     }
 
     /**

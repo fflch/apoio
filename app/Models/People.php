@@ -26,7 +26,7 @@ class People extends Model
         'observacao',
     ];
 
-    public function designations()
+    public function designation()
     {
         return $this->belongsTo('App\Models\Designation');
     }
