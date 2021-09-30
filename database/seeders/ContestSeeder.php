@@ -56,13 +56,13 @@ class ContestSeeder extends Seeder
         Contest::factory()->count(18)->create();
 
         $titulo = array('TITULAR','ASSOCIADO','DOUTOR');
-        $origem = array('FFLCH','EXTERNO');
         foreach(Contest::all()->take(10) as $contest) {
             $people = \App\Models\People::inRandomOrder()
                 ->take(10)->pluck('id');
-            foreach($people as $person) {
+            foreach($people as $key => $person) {
+                $origem = ($key <= 4) ? "FFLCH" : "EXTERNO";
                 $contest->people()->attach($person, [
-                    'origem' => $origem[array_rand($origem)],
+                    'origem' => $origem,
                     'titulo' => $titulo[array_rand($titulo)],
                 ]);
             }

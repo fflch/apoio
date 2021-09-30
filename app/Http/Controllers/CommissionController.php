@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contest;
 use App\Models\People;
-
+use App\Models\ContestPeople;
+use Illuminate\Support\Facades\DB;
 
 class CommissionController extends Controller
 {
@@ -20,7 +21,7 @@ class CommissionController extends Controller
 
         return view('commissions.index', [
             'contest' => $contest,
-            'origens'  => collect(['FFLCH','EXTERNO']),
+            'origens'  => ContestPeople::ORIGENS,
         ]);
 
     }
@@ -33,11 +34,11 @@ class CommissionController extends Controller
     public function create(Contest $contest)
     {
 
-        $contest->load('people');
-
-        return view('commissions.create', [
-            'contest' => $contest,
-        ]);
+#        $contest->load('people');
+#
+#        return view('commissions.create', [
+#            'contest' => $contest,
+#        ]);
 
     }
 
@@ -51,16 +52,17 @@ class CommissionController extends Controller
     {
         $contest = Contest::find($request->contest_id);
         $person = People::find($request->people_id);
-        if(!$contest || !$person)
-            return redirect()->back();
-        $contest->people()->attach($person, [
-            'origem' => $request->origem,
-            'titulo' => $person->designation->nome,
-        ]);
 
-        return view('commissions.index', [
-            'contest' => $contest,
-        ]);
+        if(!$contest || !$person) return redirect()->back();
+
+        if(!$contest->people->contains($person->id)) {
+            $contest->people()->attach($person, [
+                'origem' => $request->origem,
+                'titulo' => $person->designation->nome,
+            ]);
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -105,7 +107,29 @@ class CommissionController extends Controller
      */
     public function destroy(Contest $contest, People $people)
     {
-        $contest->people()->detach($people->id);
+        $contestPeople = $contest->people()
+                                 ->wherePivot('people_id', $people->id)
+                                 ->get();
+
+        foreach($contestPeople as $contestPerson){
+            $origem  = $contestPerson->commissions->origem;
+            $posicao = $contestPerson->commissions->posicao;
+        }
+
+        $positionCommissions = $contest->people()
+                                ->wherePivot('origem', $origem)
+                                ->wherePivot('posicao', '>', $posicao)
+                                ->get();
+
+        DB::transaction(function () use($contest, $people, $positionCommissions) {
+            $contest->people()->detach($people->id);
+            foreach($positionCommissions as $positionCommission) {
+                $contest->people()->updateExistingPivot($positionCommission->id, [
+                    'posicao' => $positionCommission->commissions->posicao - 1,
+                ]);
+            }
+        });
+
         return redirect()->back();
     }
 

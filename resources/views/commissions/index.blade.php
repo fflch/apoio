@@ -53,7 +53,7 @@
         @if($origem == $person->commissions->origem)
           <tr data-id="{{ $person->id }}">
             <td>{{ $person->nome }}-{{ $person->id }}</td>
-            <td>{{ $person->commissions->titulo }}</td>
+            <td>{{ $person->commissions->posicao }}-{{ $person->commissions->titulo }}</td>
             <td>{{ $person->commissions->origem }}</td>
             <td>
                <form method="post" action="{{ route('commissions.destroy',

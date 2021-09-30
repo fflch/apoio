@@ -128,6 +128,7 @@ class Contest extends Model
     public function people()
     {
         return $this->belongsToMany('App\Models\People')
+                        ->using('App\Models\ContestPeople')
                         ->withTimestamps()
                         ->withPivot(['origem', 'titulo', 'voto', 'posicao'])
                         ->orderBy('origem', 'desc')
