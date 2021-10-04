@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contest;
 use App\Models\People;
 use App\Models\ContestPeople;
+use App\Http\Requests\CommissionRequest;
 use Illuminate\Support\Facades\DB;
 
 class CommissionController extends Controller
@@ -23,22 +24,6 @@ class CommissionController extends Controller
             'contest' => $contest,
             'origens'  => ContestPeople::ORIGENS,
         ]);
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Contest $contest)
-    {
-
-#        $contest->load('people');
-#
-#        return view('commissions.create', [
-#            'contest' => $contest,
-#        ]);
 
     }
 
@@ -63,39 +48,6 @@ class CommissionController extends Controller
         }
 
         return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Commission  $commission
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Commission $commission)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Commission  $commission
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Commission $commission)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Commission  $commission
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Commission $commission)
-    {
-        //
     }
 
     /**
@@ -133,4 +85,18 @@ class CommissionController extends Controller
         return redirect()->back();
     }
 
+    public function reorder(CommissionRequest $request)
+    {
+        $validate = $request->validated();
+
+        $contest = Contest::findOrFail($validate['contest_id']);
+
+        foreach($validate['ids'] as $index => $id) {
+            $contest->people()->updateExistingPivot($id, [
+                'posicao' => $index + 1,
+            ]);
+        }
+
+        return redirect()->back();
+    }
 }

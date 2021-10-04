@@ -53,10 +53,10 @@ Route::post('/contests/getArea',[ContestController::class,'getArea'])
 
 Route::get('/commissions/contest/{contest}', [CommissionController::class, 'index'])
     ->name('commissions.index');
-#Route::get('/commissions/{contest}', [CommissionController::class, 'create'])
-#    ->name('commissions.create');
 Route::post('/commissions', [CommissionController::class, 'store'])
     ->name('commissions.store');
+Route::post('/commissions/reorder', [CommissionController::class, 'reorder'])
+    ->name('commissions.reorder');
 Route::delete('/contest/{contest}/people/{people}',
     [CommissionController::class, 'destroy'])->name('commissions.destroy');
 

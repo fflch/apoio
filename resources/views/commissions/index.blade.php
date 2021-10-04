@@ -115,12 +115,19 @@
         $(".sortable").sortable({
           items: "tr:not(.not-sortable)",
           stop: (event, ui) => {
-            var items_fflch = $fflch.sortable('toArray', {attribute: 'data-id'});
-            var items_externo = $externo.sortable('toArray', {attribute: 'data-id'});
-            var ids_fflch = $.grep(items_fflch, (item) => item !== "");
-            var ids_externo = $.grep(items_externo, (item) => item !== "");
-            var ids = $.merge(items_fflch,items_externo);
+            var origem = $(ui.item).parent().attr('id');
+            var items = $("#"+origem).sortable('toArray', {attribute: 'data-id'});
+            var ids = $.grep(items, (item) => item !== "");
             console.log(ids);
+            $.post('{{ route('commissions.reorder') }}', {
+                _token: CSRF_TOKEN,
+                contest_id: '{{ $contest->id }}',
+                ids,
+            })
+            .fail(function (response) {
+                alert('Erro ao enviar a requisição para reordenar a banca.');
+                location.reload();
+            });
           }
         });
         $("#fflch, #externo, .sortable").disableSelection();
