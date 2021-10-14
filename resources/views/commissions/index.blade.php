@@ -51,9 +51,9 @@
         </tr>
       @foreach($contest->people as $person)
         @if($origem == $person->commissions->origem)
-          <tr data-id="{{ $person->id }}">
-            <td>{{ $person->nome }}-{{ $person->id }}</td>
-            <td>{{ $person->commissions->posicao }}-{{ $person->commissions->titulo }}</td>
+          <tr data-id="{{ $person->id }}" style="cursor: move">
+            <td>{{ $person->nome }}</td>
+            <td>{{ $person->commissions->titulo }}</td>
             <td>{{ $person->commissions->origem }}</td>
             <td>
                <form method="post" action="{{ route('commissions.destroy',
