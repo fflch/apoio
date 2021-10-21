@@ -97,4 +97,8 @@ class People extends Model
         ];
     }
 
+    public function subscription()
+    {
+        return $this->belongsTo('App\Models\Subscription');
+    }
 }

@@ -136,4 +136,9 @@ class Contest extends Model
                         ->as('commissions');
     }
 
+    public function subscription()
+    {
+        return $this->belongsTo('App\Models\Subscription');
+    }
+
 }

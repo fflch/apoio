@@ -35,7 +35,7 @@
 
     </form>
 
-  <table class="table table-striped mt-4">
+  <table class="table table-striped table-bordered mt-4">
     <thead>
       <tr>
         <th scope="col">Nome</th>
@@ -46,8 +46,8 @@
     </thead>
     @foreach($origens as $origem)
     <tbody id={{ $origem }} class="sortable">
-        <tr class="not-sortable">
-          <td colspan="4" style="background-color:#ddd;">{{ $origem }}</td>
+        <tr class="not-sortable table-secondary">
+          <td colspan="4">{{ $origem }}</td>
         </tr>
       @foreach($contest->people as $person)
         @if($origem == $person->commissions->origem)
