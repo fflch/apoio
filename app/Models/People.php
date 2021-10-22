@@ -97,8 +97,8 @@ class People extends Model
         ];
     }
 
-    public function subscription()
+    public function subscriptions()
     {
-        return $this->belongsTo('App\Models\Subscription');
+        return $this->hasMany('App\Models\Subscription');
     }
 }

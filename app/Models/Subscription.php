@@ -21,11 +21,12 @@ class Subscription extends Model
 
     public function contest()
     {
-        return $this->hasOne('App\Models\Contest');
+        return $this->belongsTo('App\Models\Contest');
     }
 
-    public function person()
+    public function people()
     {
-        return $this->hasOne('App\Models\People');
+        return $this->belongsTo('App\Models\People');
     }
+
 }

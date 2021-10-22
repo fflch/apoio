@@ -23,7 +23,7 @@
   <thead>
     <tr>
       <th scope="col">Edital</th>
-      <th scope="col" width="300">Ações</th>
+      <th scope="col" width="400">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +32,10 @@
       <td><a href="{{ route('contests.edit', $contest->id) }}">
           {{ $contest->edital }}</a></td>
       <td>
+           @if($contest->status == 'A')
+           <a href="{{ route('subscriptions.index', $contest->id) }}"
+             class="btn btn-success">Inscrição</a>
+           @endif
            <a href="{{ route('commissions.index', $contest->id) }}"
              class="btn btn-success">Comissão</a>
            <a href="{{ route('contests.edit', $contest->id) }}"

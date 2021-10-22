@@ -13,6 +13,7 @@ use App\Http\Controllers\SurrogateController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::any('/people/search', [PeopleController::class,'search'])
@@ -59,6 +60,13 @@ Route::post('/commissions/reorder', [CommissionController::class, 'reorder'])
     ->name('commissions.reorder');
 Route::delete('/contest/{contest}/people/{people}',
     [CommissionController::class, 'destroy'])->name('commissions.destroy');
+
+Route::get('/subscriptions/contest/{contest}', [SubscriptionController::class, 'index'])
+    ->name('subscriptions.index');
+Route::post('/subscriptions', [SubscriptionController::class, 'store'])
+    ->name('subscriptions.store');
+Route::delete('/subscriptions/{subscription}',
+    [SubscriptionController::class, 'destroy'])->name('subscriptions.destroy');
 
 // AutoComplete
 Route::get('/search/searchPeople', [SearchController::class,'searchPeople'])
